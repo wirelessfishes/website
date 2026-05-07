@@ -1,11 +1,4 @@
 {
-  "plugins": ["prettier-plugin-jinja-template"],
-  "overrides": [
-    {
-      "files": ["*.njk"],
-      "options": { "parser": "jinja-template" }
-    }
-  ],
   "printWidth": 120,
   "tabWidth": 2,
   "useTabs": false,

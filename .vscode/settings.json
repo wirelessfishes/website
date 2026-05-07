@@ -1,9 +1,0 @@
-{
-  "path-intellisense.mappings": {
-    "/": "${workspaceFolder}/src"
-  },
-  "[.xml.njk]": {
-    "editor.formatOnSave": false
-  },
-  "css.styleSheets": ["src/**/*.css"]
-}

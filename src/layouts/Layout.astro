@@ -1,0 +1,86 @@
+---
+import "../assets/css/reset.css";
+import "../assets/css/style.css";
+import BaseHead from "../components/BaseHead.astro";
+
+const { title } = Astro.props;
+---
+
+<style>
+  body {
+    background-color: #242424;
+    color: white;
+    padding: 0px 64px;
+    min-height: 100vh;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    width: 800px;
+    height: 600px;
+    background-color: black;
+    border: 4px ridge #7a7a7a;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 0px 0px 16px black;
+  }
+
+  details {
+    z-index: 10;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  summary:hover {
+    cursor: pointer;
+  }
+
+  details:open {
+    background-color: black;
+    border: 4px ridge #7a7a7a;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0px 0px 16px black;
+    padding: 8px 16px;
+  }
+
+  .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: blur(2px);
+  }
+</style>
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} />
+  </head>
+
+  <body>
+    <div class="content">
+      <slot />
+    </div>
+
+    <details>
+      <summary>Extremely sleek footer</summary>
+
+      <div>
+        ♡ Copying is an act of theft, while taking inspiration is the true act of love.
+        <a href="https://maxpixels.moe/manifesto/">⧉</a>
+      </div>
+
+      <div>Made with SPITE, BOREDOM and my FUCKED UP BRAIN. © Sharky 2025-2026 <a href="/license/">↗</a></div>
+    </details>
+
+    <img alt="background image" class="bg" src="/assets/pole.jpg" />
+  </body>
+</html>

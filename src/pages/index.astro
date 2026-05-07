@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Buttons88x31 from "../components/Buttons88x31.astro";
+---
+
+<style>
+  .title {
+    width: 100%;
+    background-color: grey;
+    color: black;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  .content-pad {
+    padding: 8px;
+  }
+</style>
+
+<Layout title="Sharky's website">
+  <h1 class="title content-pad">Fishes don't contain wires</h1>
+  <marquee style="background-color: blue; font-weight: bold;">I will fucking find you</marquee>
+  <Navbar />
+
+  <section class="content-pad">
+    <h2>SOFTWARE, HARDWARE, SHARKS AND MORE</h2>
+    <p>
+      Have you ever thought <i>"wow I need to see that website of some person posing as a shark online"</i>? WELL YOU'VE
+      COME TO THE RIGHT PLACE!
+    </p>
+  </section>
+
+  <img alt="low-poly blacktip shark model" style="float: right; width: 256px" src="/assets/shark.png" />
+
+  <section class="content-pad">
+    <h2>Contact:</h2>
+    <p>WARNING: I may bite</p>
+    <ul>
+      <li>Discord: wirelessfishes (1248946136123707495)</li>
+      <li>E-Mail: sharky@wireless.fish</li>
+    </ul>
+  </section>
+
+  <section class="content-pad">
+    <h2>Cool websites:</h2>
+    <Buttons88x31 />
+  </section>
+</Layout>
