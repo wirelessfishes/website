@@ -1,29 +1,20 @@
 <style>
-    nav {
-        padding: 8px;
-    }
+  nav a::before {
+    content: "[";
+  }
 
-    nav a::before {
-        content: "[";
-    }
+  nav a::after {
+    content: "]";
+  }
 
-    nav a::after {
-        content: "]";
-    }
-
-    a {
-        padding: 2px 4px;
-    }
-
-    a:hover {
-        color: white;
-        background-color: blue;
-    }
+  a {
+    padding: 2px 4px;
+  }
 </style>
 
 <nav>
-    <a href="/">Home</a>
-    <a href="/collections">Collections</a>
-    |
-    <a href="https://git.wireless.fish/sharky">Git</a>
+  <a href="/">Home</a>
+  <a href="/collections">Collections</a>
+  |
+  <a href="https://git.wireless.fish/sharky">Git</a>
 </nav>

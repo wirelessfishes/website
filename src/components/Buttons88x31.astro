@@ -8,6 +8,7 @@
   div > a {
     border: 1px solid transparent;
     display: block;
+    transition: 200ms;
   }
 
   div > a:hover {
@@ -18,10 +19,14 @@
     display: flex;
     flex-wrap: wrap;
   }
+
+  .noelle:hover {
+    filter: invert(100%);
+  }
 </style>
 
 <div>
-  <a href="https://ivrry.nekoweb.org/">
+  <a href="https://ivrry.nekoweb.org/" class="noelle">
     <img alt="ivrry" src="https://ivrry.nekoweb.org/assets/images/button.png" />
   </a>
 </div>

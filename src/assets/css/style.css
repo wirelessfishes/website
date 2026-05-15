@@ -4,6 +4,11 @@ a:visited {
 }
 
 a:hover {
+  color: white;
+  background-color: blue;
+}
+
+a:hover {
   text-decoration: none;
 }
 

@@ -2,15 +2,15 @@
 import "../assets/css/reset.css";
 import "../assets/css/style.css";
 import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../components/Navbar.astro";
 
 const { title } = Astro.props;
 ---
 
 <style>
   body {
-    background-color: #242424;
+    background-color: #000021;
     color: white;
-    padding: 0px 64px;
     min-height: 100vh;
     font-family: sans-serif;
     display: flex;
@@ -20,43 +20,29 @@ const { title } = Astro.props;
   }
 
   .content {
-    width: 800px;
-    height: 600px;
+    max-width: 1200px;
+    min-height: 100vh;
     background-color: black;
-    border: 4px ridge #7a7a7a;
-    border-radius: 16px;
-    overflow: hidden;
-    z-index: 10;
     box-shadow: 0px 0px 16px black;
   }
 
-  details {
-    z-index: 10;
-    margin-top: 8px;
+  footer {
     text-align: center;
+    font-style: italic;
   }
 
-  summary:hover {
-    cursor: pointer;
-  }
-
-  details:open {
-    background-color: black;
-    border: 4px ridge #7a7a7a;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0px 0px 16px black;
-    padding: 8px 16px;
-  }
-
-  .bg {
-    position: absolute;
-    left: 0;
-    top: 0;
+  header {
     width: 100%;
-    height: 100%;
-    z-index: 0;
-    filter: blur(2px);
+    padding: 8px;
+
+    h1 {
+      font-size: 50px;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 4px 8px;
+    }
   }
 </style>
 
@@ -67,20 +53,32 @@ const { title } = Astro.props;
 
   <body>
     <div class="content">
+      <img
+        alt="low-poly blacktip shark model"
+        style="float: right; width: 200px; margin: 8px;"
+        src="/assets/shark.png"
+      />
+
+      <header>
+        <h1 style="display: inline;">
+          <a href="/">wireless.fish</a>
+        </h1>
+
+        <span style="font-style: italic; opacity: 50%;">Fishes do NOT contain wires</span>
+
+        <Navbar />
+      </header>
+
       <slot />
+
+      <footer>
+        <div>
+          ♡ Copying is an act of theft, while taking inspiration is the true act of love.
+          <a href="https://maxpixels.moe/manifesto/">⧉</a>
+        </div>
+
+        <div>Made with SPITE, BOREDOM and my FUCKED UP BRAIN. © Sharky 2025-2026 <a href="/license/">↗</a></div>
+      </footer>
     </div>
-
-    <details>
-      <summary>Extremely sleek footer</summary>
-
-      <div>
-        ♡ Copying is an act of theft, while taking inspiration is the true act of love.
-        <a href="https://maxpixels.moe/manifesto/">⧉</a>
-      </div>
-
-      <div>Made with SPITE, BOREDOM and my FUCKED UP BRAIN. © Sharky 2025-2026 <a href="/license/">↗</a></div>
-    </details>
-
-    <img alt="background image" class="bg" src="/assets/pole.jpg" />
   </body>
 </html>
