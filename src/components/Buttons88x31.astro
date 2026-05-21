@@ -1,3 +1,7 @@
+---
+import json from "../data/website_buttons.json";
+---
+
 <style>
   div > a > img {
     width: 88px;
@@ -13,6 +17,7 @@
 
   div > a:hover {
     border: 1px solid white;
+    background: transparent;
   }
 
   div {
@@ -26,7 +31,11 @@
 </style>
 
 <div>
-  <a href="https://ivrry.nekoweb.org/" class="noelle">
-    <img alt="ivrry" src="https://ivrry.nekoweb.org/assets/images/button.png" />
-  </a>
+  {
+    json.buttons.map((btn) => (
+      <a href={btn.href} class={btn.class}>
+        <img loading="lazy" alt={btn.alt} src={btn.src} />
+      </a>
+    ))
+  }
 </div>

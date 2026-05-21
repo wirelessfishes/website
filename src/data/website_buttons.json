@@ -1,0 +1,82 @@
+{
+  "buttons": [
+    {
+      "href": "https://ivrry.nekoweb.org/",
+      "src": "https://ivrry.nekoweb.org/assets/images/button.png",
+      "alt": "ivrry",
+      "class": "noelle"
+    },
+    {
+      "href": "https://nekoweb.org/",
+      "src": "https://nekoweb.org/assets/buttons/button11.gif",
+      "alt": "nekoweb",
+      "class": ""
+    },
+    {
+      "href": "https://breq.dev/",
+      "src": "/assets/buttons/breq.png",
+      "alt": "breq",
+      "class": ""
+    },
+    {
+      "href": "https://synth.download/",
+      "src": "https://synth.download/assets/buttons/synth.download.svg",
+      "alt": "Synth.Download!",
+      "class": ""
+    },
+    {
+      "href": "https://eightyeightthirty.one/",
+      "src": "/assets/buttons/eightyeightythirtyone.png",
+      "alt": "eightyeightthirtyone",
+      "class": ""
+    },
+    {
+      "href": "https://votehusky.org/",
+      "src": "https://votehusky.org/buttons/button2.png",
+      "alt": "votehusky",
+      "class": ""
+    },
+    {
+      "href": "https://swiftyshq.neocities.org/",
+      "src": "/assets/buttons/swsign.png",
+      "alt": "swiftyshq",
+      "class": ""
+    },
+    {
+      "href": "https://dimden.dev/",
+      "src": "https://dimden.dev/services/images/88x31.gif",
+      "alt": "dimden",
+      "class": ""
+    },
+    {
+      "href": "https://tuxedodragon.art/",
+      "src": "/assets/buttons/tuxedodragon.gif",
+      "alt": "tuxedodragon",
+      "class": ""
+    },
+    {
+      "href": "https://status.cafe/",
+      "src": "https://status.cafe/assets/button.png",
+      "alt": "Status Cafe",
+      "class": ""
+    },
+    {
+      "href": "https://maia.crimew.gay/",
+      "src": "/assets/buttons/maia.png",
+      "alt": "maia :3",
+      "class": ""
+    },
+    {
+      "href": "https://jbc.lol/",
+      "src": "https://jbc.lol/imgs/buttons/jbtn.svg",
+      "alt": "jb's site",
+      "class": ""
+    },
+    {
+      "href": "https://millacat3.nekoweb.org/",
+      "src": "https://file.garden/aVfFIHMNm0ogIHA8/Millacat3%20web.gif",
+      "alt": "milacat3",
+      "class": ""
+    }
+  ]
+}

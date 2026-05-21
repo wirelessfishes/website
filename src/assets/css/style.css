@@ -1,11 +1,11 @@
 a,
 a:visited {
-  color: blue;
+  color: #2563eb;
 }
 
 a:hover {
   color: white;
-  background-color: blue;
+  background-color: #2563eb;
 }
 
 a:hover {

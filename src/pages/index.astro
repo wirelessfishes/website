@@ -13,6 +13,38 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
+
+  .msg-bottle {
+    position: relative;
+
+    img {
+      width: 200px;
+    }
+
+    form {
+      position: absolute;
+      top: 180px;
+      left: 5px;
+      width: 200px;
+      padding: 8px;
+
+      background-color: rgba(32, 32, 32, 0.5);
+    }
+
+    form textarea {
+      height: 128px;
+      width: 100%;
+      resize: vertical;
+    }
+
+    form button {
+      width: 100%;
+    }
+
+    form input {
+      width: 180px;
+    }
+  }
 </style>
 
 <script src="/scripts/statuscafe.js" defer type="module"></script>
@@ -55,5 +87,15 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
       blub blub blub (content not loaded yet)
       <noscript>(requires javascript)</noscript>
     </div>
+  </section>
+
+  <section class="msg-bottle">
+    <img alt="glass bottle" src="/assets/images/bottle.png" style="image-rendering: pixelated; width: 200px" />
+
+    <form>
+      <label>Send me an anonymous message in a bottle!</label>
+      <textarea placeholder="hello, sharky"></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 </Layout>

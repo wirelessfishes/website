@@ -1,4 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
+import Layout from "../layouts/Collection.astro";
 ---
+
+<style>
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    font-size: xx-large;
+    font-weight: bold;
+
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+    a {
+      padding: 2px 12px;
+      text-decoration: none;
+
+      background-color: #2563eb;
+      color: white;
+    }
+
+    a:hover {
+      background-color: transparent;
+      color: #2563eb;
+    }
+  }
+</style>
+
+<Layout title="Collections">
+  <h1>This will make a fine addition to my collection</h1>
+
+  <div class="links">
+    <a href="/collections/blinkies/">Blinkies</a>
+    <a href="/collections/stamps/">Stamps</a>
+    <a href="/collections/other/">Other</a>
+  </div>
+
+  <a href="/">Go back?</a>
+</Layout>
