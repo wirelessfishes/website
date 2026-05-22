@@ -18,14 +18,11 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install 11ty
-        run: npm install @11ty/eleventy
-
-      - name: Pre-build steps
-        run: rm -rf site/*
+      - name: Install dependencies
+        run: pnpm ci
 
       - name: Build site
-        run: npx @11ty/eleventy
+        run: pnpm astro build
 
       # deploy
 
@@ -35,4 +32,4 @@ jobs:
           nekoweb-api-key: ${{ secrets.API_KEY }}
           nekoweb-domain: "wireless.fish"
           nekoweb-username: "sharkyfur"
-          directory: "site"
+          directory: "dist"
