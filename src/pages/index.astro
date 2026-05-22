@@ -46,6 +46,7 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
 </style>
 
 <script src="/scripts/statuscafe.js" defer type="module"></script>
+<script src="/scripts/notify.js" defer type="module"></script>
 
 <Layout title="Sharky's website">
   <section class="msg-bottle">
@@ -53,8 +54,8 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
 
     <form>
       <label>Send me an anonymous message in a bottle!</label>
-      <textarea placeholder="hello, sharky"></textarea>
-      <button type="submit">Send</button>
+      <textarea id="notifyinput" placeholder="hello, sharky"></textarea>
+      <button id="notifysend" type="submit">Send</button>
     </form>
   </section>
 
