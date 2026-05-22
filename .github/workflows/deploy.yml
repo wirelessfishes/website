@@ -11,14 +11,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # build step
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
 
       - name: Install dependencies
-        uses: pnpm/action-setup@v6
-        run: pnpm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build site
-        run: pnpm astro build
+        run: pnpm run build
 
       # deploy
 
