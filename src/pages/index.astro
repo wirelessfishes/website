@@ -4,10 +4,6 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
 ---
 
 <style>
-  .content-pad {
-    padding: 8px;
-  }
-
   .grid-1-1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -16,6 +12,8 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
 
   .msg-bottle {
     position: relative;
+    float: right;
+    z-index: 10;
 
     img {
       width: 200px;
@@ -50,29 +48,44 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
 <script src="/scripts/statuscafe.js" defer type="module"></script>
 
 <Layout title="Sharky's website">
-  <section class="content-pad">
-    <h2>SOFTWARE, HARDWARE, SHARKS AND MORE</h2>
-    <p>
-      Have you ever thought <i>"wow I need to see that website of some person posing as a shark online"</i>? WELL YOU'VE
-      COME TO THE RIGHT PLACE!
-    </p>
+  <section class="msg-bottle">
+    <img alt="glass bottle" src="/assets/images/bottle.png" style="image-rendering: pixelated; width: 200px" />
+
+    <form>
+      <label>Send me an anonymous message in a bottle!</label>
+      <textarea placeholder="hello, sharky"></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
-  <section class="content-pad">
-    <h2>Contact:</h2>
-    <p>WARNING: I may bite</p>
-    <ul>
-      <li>Discord: wirelessfishes (1248946136123707495)</li>
-      <li>E-Mail: sharky@wireless.fish</li>
-    </ul>
-  </section>
+  <div style="display: grid; grid-template-columns: 2fr 1fr;">
+    <section>
+      <h2>SOFTWARE, HARDWARE, SHARKS AND MORE</h2>
+      <p>
+        Have you ever thought <i>"wow I need to see that website of some person posing as a shark online"</i>? WELL
+        YOU'VE COME TO THE RIGHT PLACE!
+      </p>
 
-  <section class="content-pad">
+      <p>Yeah, it's coming together. I am totally NOT PROCRASTINATING AT ALL on making this website.</p>
+    </section>
+
+    <section>
+      <h2>Contact:</h2>
+      <p>WARNING: I may bite</p>
+      <ul>
+        <li>Discord: wirelessfishes (1248946136123707495)</li>
+        <li>E-Mail: sharky@wireless.fish</li>
+      </ul>
+    </section>
+  </div>
+
+  <section>
     <h2>Cool websites:</h2>
     <Buttons88x31 />
   </section>
 
-  <section class="content-pad" style="position: relative; color: black;">
+  <p style="margin-top: 1em;">Look @ what the shark said today:</p>
+  <section style="position: relative; color: black;">
     <img alt="shark say" src="/assets/sharksay.jpg" />
 
     <div style="position: absolute; top: 70px; left: 70px;">
@@ -87,15 +100,5 @@ import Buttons88x31 from "../components/Buttons88x31.astro";
       blub blub blub (content not loaded yet)
       <noscript>(requires javascript)</noscript>
     </div>
-  </section>
-
-  <section class="msg-bottle">
-    <img alt="glass bottle" src="/assets/images/bottle.png" style="image-rendering: pixelated; width: 200px" />
-
-    <form>
-      <label>Send me an anonymous message in a bottle!</label>
-      <textarea placeholder="hello, sharky"></textarea>
-      <button type="submit">Send</button>
-    </form>
   </section>
 </Layout>
