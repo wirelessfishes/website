@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta lang="en-US" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="{{eleventy.generator}}" />
+
+    <!-- SOME STUFF -->
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
+    <meta name="description" content="{{ description }}" />
+
+    <!-- https://ogp.me stuff -->
+    <meta property="og:url" content="https://wireless.fish{{ page.url }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ title }}" />
+    {% if description %}<meta property="og:description" content="{{ description }}" />{% endif %}
+    {% if og_img %}<meta property="og:image" content="{{ og_img }}" />{% endif %}
+
+    {# base styles #}
+    <link rel="stylesheet" href="/css/style.css" />
+
+    {% block head %}
+    {% endblock %}
+
+    {% block style %}
+    {% endblock %}
+
+    {% for sheet in extra_css %}
+      <link rel="stylesheet" href="{{ sheet }}" />
+    {% endfor %}
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <h1>wireless.fish</h1>
+        <a href="/">Home</a>
+        |
+        <a href="/collections">Collections</a>
+        |
+        <span style="color: grey">Guestbook</span>
+        |
+        <span style="color: grey">Sharks</span>
+        |
+        <a href="https://git.wireless.fish/sharky">Git ↗</a>
+      </nav>
+      <hr />
+    </header>
+
+    {{ content | safe }}
+
+    <hr />
+
+    <footer style="text-align: center;">
+        <div>
+          ♡ Copying is an act of theft, while taking inspiration is the true act of love.
+          <a class="link-button" href="https://maxpixels.moe/manifesto/">↗</a>
+        </div>
+
+        <div>© Sharky 2025-2026 <a class="link-button" href="/license/">→</a></div>
+      </footer>
+  </body>
+</html>

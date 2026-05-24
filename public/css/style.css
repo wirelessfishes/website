@@ -1,0 +1,76 @@
+html {
+  background-color: lightslategrey;
+  padding: 16px;
+}
+
+body {
+  max-width: 1000px;
+
+  color: black;
+  font-family: monospace;
+  font-size: 14px;
+
+  margin: auto;
+
+  background-color: lightblue;
+  border: 1px dashed black;
+  padding: 16px;
+}
+
+h1 {
+  margin-block: 0.67em;
+  font-size: 2em;
+}
+
+a,
+a:visited {
+  color: blue;
+}
+
+a:hover {
+  color: white;
+  background-color: blue;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+p + p {
+  margin-top: 0.5em;
+}
+
+hr {
+  margin: 1em 0px;
+}
+
+.link-button {
+  padding: 2px 5px;
+}
+
+textarea {
+  border: 1px solid black;
+}
+
+textarea:focus {
+  outline: 1px solid blue;
+}
+
+.button-action {
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+
+  background-color: blue;
+}
+
+.button-action:hover:not(:disabled) {
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+}
+
+.button-action:disabled {
+  color: lightgrey;
+  background-color: grey;
+}

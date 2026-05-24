@@ -1,0 +1,104 @@
+---
+layout: layouts/layout.njk
+title: wireless.fish
+description: Sharky's personal webpage. The creature. Shark-infested website. wireless.fish 🐟
+
+extra_css:
+  - /css/page/index.css
+---
+
+<script src="/scripts/notify.js" type="module" defer></script>
+<script src="/scripts/statuscafe.js" type="module" defer></script>
+
+<section>
+  <h2>SOFTWARE, HARDWARE, SHARKS AND MORE</h2>
+
+  <p>
+    Have you ever thought <i>"wow I need to see that website of some person posing as a shark online"</i>? WELL YOU'VE
+    COME TO THE RIGHT PLACE! I'm Sharky, nice to meet you.
+  </p>
+
+  <p>It's all coming together. I am totally NOT PROCRASTINATING AT ALL on making this website.</p>
+</section>
+
+<hr />
+
+<section>
+  <h2>Webrings</h2>
+
+  <span>
+    <a href="https://jbc.lol/webrings/ssgring/redirect?slug=sharky&way=prev" class="link-button">&larr;</a>
+    <a target="_blank" href="https://jbc.lol/webrings/ssgring/">SSG ring</a>
+    <a href="https://jbc.lol/webrings/ssgring/redirect?slug=sharky&way=next" class="link-button">&rarr;</a>
+  </span>
+  |
+  <span>
+    <a href="https://baccyflap.com/noai/?prv&s=shr" target="_top" title="previous" class="link-button">&larr;</a>
+    <a href="https://baccyflap.com/noai" target="_blank">the no AI webring</a>
+    <a href="https://baccyflap.com/noai/?nxt&s=shr" target="_top" title="next" class="link-button">&rarr;</a>
+  </span>
+  |
+  <span>
+    <a href="https://webring.dinhe.net/prev/https://wireless.fish/" class="link-button">&larr;</a>
+    <a target="_blank" href="https://webring.dinhe.net">retronaut webring</a>
+    <a href="https://webring.dinhe.net/next/https://wireless.fish/" class="link-button">&rarr;</a>
+  </span>
+</section>
+
+<hr />
+
+<section>
+  <h2>Contact</h2>
+
+  <p>WARNING: I may bite</p>
+
+  <ul>
+    <li>Discord: wirelessfishes (1248946136123707495)</li>
+    <li>E-Mail: sharky@wireless.fish</li>
+  </ul>
+</section>
+
+<hr />
+
+<section>
+  <h2>Send me an anonymous message!</h2>
+
+  <noscript>Requires javascript!!</noscript>
+
+  <p>This will be recieved in the form of a push notification on my mobile device.</p>
+
+  <form class="notify">
+    <textarea id="notifyinput" placeholder="hello, sharky" rows="1" spellcheck="false"></textarea>
+    <button id="notifysend" class="button-action" type="submit" disabled>Send 🠊</button>
+  </form>
+</section>
+
+<hr />
+
+<section>
+  <h2>Latest status</h2>
+
+  <div>
+    <span id="statuscafe-username">username</span>
+    <span id="statuscafe-ago">date</span>
+  </div>
+
+  <div id="statuscafe-content">
+    blub blub blub (content not loaded yet)
+    <noscript>(requires javascript)</noscript>
+  </div>
+</section>
+
+<hr />
+
+<section>
+  <h2>Visit these sites</h2>
+
+  <div class="eightyeight">
+    {% for entry in eightyeight %}
+    <a href="{{entry.href}}">
+      <img class="{{entry.class}}" src="{{entry.src}}" alt="{{entry.alt}}" />
+    </a>
+    {% endfor %}
+  </div>
+</section>

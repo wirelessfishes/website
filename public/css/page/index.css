@@ -1,0 +1,33 @@
+.notify {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  gap: 1em;
+}
+
+.notify > form {
+  height: 1em;
+}
+
+.eightyeight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.eightyeight > a:hover {
+  background-color: transparent;
+}
+
+.eightyeight > a {
+  text-decoration: none;
+}
+
+.eightyeight img,
+.eightyeight a {
+  width: 88px;
+  height: 31px;
+}
+
+.noelle:hover {
+  filter: invert(100%);
+}
