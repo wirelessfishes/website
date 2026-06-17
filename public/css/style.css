@@ -1,19 +1,22 @@
+@import url("/fonts/Inter/inter.css");
+
 html {
   background-color: lightslategrey;
+  background-image: url("/assets/background.jpg");
+  background-size: cover;
   padding: 16px;
 }
 
 body {
   max-width: 1000px;
 
-  color: black;
-  font-family: monospace;
-  font-size: 14px;
+  color: white;
+  font-family: "Inter";
+  font-size: 16px;
 
   margin: auto;
 
-  background-color: lightblue;
-  border: 1px dashed black;
+  background-color: #4e6a8e;
   padding: 16px;
 }
 
@@ -24,12 +27,12 @@ h1 {
 
 a,
 a:visited {
-  color: blue;
+  color: #5bcefa;
 }
 
 a:hover {
   color: white;
-  background-color: blue;
+  background-color: #5bcefa;
 }
 
 a:hover {
