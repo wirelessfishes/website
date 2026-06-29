@@ -75,17 +75,29 @@ extra_css:
 
 <hr />
 
-<section>
-  <h2>Latest status</h2>
+<section style="display: flex">
+  <div style="flex: 1">
+    <h2>Latest status</h2>
 
-  <div>
-    <span id="statuscafe-username">username</span>
-    <span id="statuscafe-ago">date</span>
+    <div>
+      <span id="statuscafe-username">username</span>
+      <span id="statuscafe-ago">date</span>
+    </div>
+
+    <div id="statuscafe-content">
+      blub blub blub (content not loaded yet)
+      <noscript>(requires javascript)</noscript>
+    </div>
   </div>
 
-  <div id="statuscafe-content">
-    blub blub blub (content not loaded yet)
-    <noscript>(requires javascript)</noscript>
+  <div style="flex: 1">
+    <h2>Listening status</h2>
+
+    <div style="opacity: 50%; font-style: italic">Listening right now</div>
+
+    <div><span>Track name</span> - <span>Artist</span></div>
+
+    <div>Album name</div>
   </div>
 </section>
 
