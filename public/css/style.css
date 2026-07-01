@@ -16,8 +16,12 @@ body {
 
   margin: auto;
 
-  background-color: #4e6a8e;
+  background-color: #1c285e;
   padding: 16px;
+}
+
+body > section + section {
+  margin-top: 32px;
 }
 
 h1 {
@@ -25,14 +29,18 @@ h1 {
   font-size: 2em;
 }
 
+h2 {
+  margin-block: 0.5em;
+}
+
 a,
 a:visited {
-  color: #5bcefa;
+  color: #5b9bfa;
 }
 
 a:hover {
   color: white;
-  background-color: #5bcefa;
+  background-color: #5b9bfa;
 }
 
 a:hover {
@@ -41,11 +49,6 @@ a:hover {
 
 p + p {
   margin-top: 0.5em;
-}
-
-hr {
-  margin: 1em 0px;
-  border-top: 1px solid white;
 }
 
 .link-button {
