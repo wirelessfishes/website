@@ -37,24 +37,24 @@
 
   <body>
     <header>
-      <nav>
-        <h1 style="font-weight: 900; font-size: 42px;">wireless.fish</h1>
+      <h1 class="site-title">wireless.fish</h1>
 
-        <a href="/">Home</a>
-        |
-        <a href="/collections">Collections</a>
-        |
-        <span style="color: grey">Guestbook</span>
-        |
-        <span style="color: grey">Sharks</span>
-        |
-        <a href="https://git.wireless.fish/sharky">Git ↗</a>
+      <nav style="display: flex; gap: 4px;">
+        <a class="button" href="/">Home</a>
+        <a class="button" href="/collections">Collections</a>
+        <span class="button_disabled" style="color: grey">Guestbook</span>
+        <span class="button_disabled" style="color: grey">Sharks</span>
+        <a class="button" class="button" href="https://git.wireless.fish/sharky">Git ↗</a>
       </nav>
     </header>
 
+    <div class="horizontal-divider"></div>
+
     {{ content | safe }}
 
-    <footer style="text-align: center;">
+    <div class="horizontal-divider"></div>
+
+    <footer style="text-align: center; display: flex; flex-direction: column; gap: 1px;">
         <div>
           ♡ Copying is an act of theft, while taking inspiration is the true act of love.
           <a class="link-button" href="https://maxpixels.moe/manifesto/">↗</a>

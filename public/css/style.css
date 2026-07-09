@@ -1,8 +1,12 @@
 @import url("/fonts/Inter/inter.css");
 
+:root {
+  --main-color: #73abff;
+  --font-color: #e4f3fd;
+}
+
 html {
-  background-color: lightslategrey;
-  background-image: url("/assets/background.jpg");
+  background-color: #1c285e;
   background-size: cover;
   padding: 16px;
 }
@@ -10,13 +14,11 @@ html {
 body {
   max-width: 1000px;
 
-  color: white;
+  color: var(--font-color);
   font-family: "Inter";
   font-size: 16px;
 
   margin: auto;
-
-  background-color: #1c285e;
   padding: 16px;
 }
 
@@ -35,20 +37,21 @@ h2 {
 
 a,
 a:visited {
-  color: #5b9bfa;
+  color: var(--main-color);
 }
 
 a:hover {
-  color: white;
-  background-color: #5b9bfa;
-}
-
-a:hover {
+  color: #032042;
+  background-color: var(--main-color);
   text-decoration: none;
 }
 
+p {
+  margin: 0.25em 0px;
+}
+
 p + p {
-  margin-top: 0.5em;
+  margin-top: 0.25em;
 }
 
 .link-button {
@@ -56,28 +59,72 @@ p + p {
 }
 
 textarea {
-  border: 1px solid black;
+  color: var(--font-color);
+  font-family: "Inter";
+
+  padding: 2px 4px;
+  border: 1px solid var(--font-color);
+  border-radius: 2px;
+  background-color: #314c85;
 }
 
 textarea:focus {
-  outline: 1px solid blue;
+  outline: none;
+  border-color: var(--main-color);
+}
+
+.button,
+.button_disabled {
+  color: #aecaee !important;
+  text-decoration: none;
+  border: 1px solid #aecaee;
+  background: linear-gradient(#053163, #032042);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.button:hover:not(:disabled) {
+  color: white !important;
+  background: linear-gradient(#8ebaec, #4795ee);
+  border-color: white;
+}
+
+.button:disabled,
+.button_disabled,
+.button-action:disabled {
+  color: #637286 !important;
+  font-style: italic;
+  border: 1px solid #637286;
+  background: #1a2844;
 }
 
 .button-action {
   color: white;
   font-weight: bold;
-  border: 1px solid black;
+  border: 1px solid var(--font-color);
+  border-radius: 2px;
 
-  background-color: blue;
+  background-color: #4e81cc;
 }
 
 .button-action:hover:not(:disabled) {
-  background-color: white;
-  color: blue;
+  background-color: #1b3463;
+  color: var(--main-color);
   cursor: pointer;
 }
 
-.button-action:disabled {
-  color: lightgrey;
-  background-color: grey;
+.site-title {
+  font-weight: 900;
+  font-size: 42px;
+  color: var(--main-color);
+  letter-spacing: 25%;
+
+  text-shadow: 8px 8px 0px #32568b46;
+}
+
+.horizontal-divider {
+  border-top: 2px dashed #465481;
+
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
