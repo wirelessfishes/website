@@ -1,4 +1,5 @@
 @import url("/fonts/Inter/inter.css");
+@import url("/fonts/HS_LunaObscura/luna.css");
 
 :root {
   --main-color: #73abff;
@@ -7,7 +8,8 @@
 
 html {
   background-color: #1c285e;
-  background-size: cover;
+  background: url("/assets/wireless_fish_bg.png");
+  background-size: contain;
   padding: 16px;
 }
 
@@ -117,7 +119,8 @@ textarea:focus {
   font-weight: 900;
   font-size: 42px;
   color: var(--main-color);
-  letter-spacing: 25%;
+  font-family: "HS LunaObscura";
+  font-feature-settings: "ss01" 1;
 
   text-shadow: 8px 8px 0px #32568b46;
 }

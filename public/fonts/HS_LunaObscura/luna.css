@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "HS LunaObscura";
+  font-display: swap;
+  src:
+    url("/fonts/HS_LunaObscura/HS_LunaObscura.woff2"), format("woff2"), url("/fonts/HS_LunaObscura/HS_LunaObscura.otf"),
+    format("otf"), url("/fonts/HS_LunaObscura/HS_LunaObscura.ttf"), format("ttf");
+}
