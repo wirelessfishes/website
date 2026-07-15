@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Stack Sans Text";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("StackSansText-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Stack Sans Text";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("StackSansText-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Stack Sans Text";
+  font-style: normal;
+  font-weight: light;
+  font-display: swap;
+  src: url("StackSansText-Light.ttf");
+}
+
+@font-face {
+  font-family: "Stack Sans Text";
+  font-style: normal;
+  font-weight: lighter;
+  font-display: swap;
+  src: url("StackSansText-ExtraLight.ttf");
+}

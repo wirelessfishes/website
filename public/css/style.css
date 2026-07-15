@@ -1,13 +1,20 @@
 @import url("/fonts/Inter/inter.css");
 @import url("/fonts/HS_LunaObscura/luna.css");
+@import url("/fonts/StackSansText/stack_sans_text.css");
 
 :root {
-  --main-color: #1e78ff;
-  --font-color: #e4f3fd;
+  --blue: #1e78ff;
+  --white: #f5f5f5;
+  --black: #171717;
+  --bg: #1c285e;
+
+  color: var(--white);
+  font-family: "Stack Sans Text";
+  font-size: 16px;
 }
 
 html {
-  background-color: #1c285e;
+  background-color: var(--bg);
   background: url("/assets/wireless_fish_bg.jpg");
   background-size: contain;
   padding: 16px;
@@ -15,10 +22,6 @@ html {
 
 body {
   max-width: 1000px;
-
-  color: var(--font-color);
-  font-family: "Inter";
-  font-size: 16px;
 
   margin: auto;
   padding: 16px;
@@ -29,22 +32,34 @@ body > section + section {
 }
 
 h1 {
+  color: var(--blue);
+
+  font-family: "HS LunaObscura";
+  font-feature-settings: "ss01" 1;
   margin-block: 0.67em;
-  font-size: 2em;
+  font-size: 42px;
 }
 
 h2 {
+  font-family: "HS LunaObscura";
+  font-feature-settings: "ss01" 1;
+  font-size: 26px;
   margin-block: 0.5em;
+}
+
+h3 {
+  font-family: "Stack Sans Text";
+  font-size: 21px;
 }
 
 a,
 a:visited {
-  color: var(--main-color);
+  color: var(--blue);
 }
 
 a:hover {
-  color: #032042;
-  background-color: var(--main-color);
+  color: var(--white);
+  background-color: var(--blue);
   text-decoration: none;
 }
 
@@ -61,33 +76,37 @@ p + p {
 }
 
 textarea {
-  color: var(--font-color);
+  color: var(--white);
   font-family: "Inter";
 
   padding: 2px 4px;
-  border: 1px solid var(--font-color);
+  border: 1px solid var(--white);
   border-radius: 2px;
   background-color: #314c85;
 }
 
 textarea:focus {
   outline: none;
-  border-color: var(--main-color);
+  border-color: var(--blue);
 }
 
 .button,
 .button_disabled {
   color: #aecaee !important;
   text-decoration: none;
-  border: 1px solid #aecaee;
-  background: linear-gradient(#053163, #032042);
-  padding: 2px 5px;
-  border-radius: 3px;
+  background: linear-gradient(#0a5cb9, #1672db);
+  padding: 2px 14px;
+  transform: skew(-45deg);
+
+  span {
+    display: inline-block;
+    transform: skew(45deg);
+  }
 }
 
 .button:hover:not(:disabled) {
-  color: white !important;
-  background: linear-gradient(#8ebaec, #4795ee);
+  color: var(--black) !important;
+  background: var(--white);
   border-color: white;
 }
 
@@ -95,15 +114,14 @@ textarea:focus {
 .button_disabled,
 .button-action:disabled {
   color: #637286 !important;
-  font-style: italic;
-  border: 1px solid #637286;
   background: #1a2844;
+  cursor: default;
 }
 
 .button-action {
   color: white;
   font-weight: bold;
-  border: 1px solid var(--font-color);
+  border: 1px solid var(--white);
   border-radius: 2px;
 
   background-color: #4e81cc;
@@ -111,22 +129,16 @@ textarea:focus {
 
 .button-action:hover:not(:disabled) {
   background-color: #1b3463;
-  color: var(--main-color);
+  color: var(--blue);
   cursor: pointer;
 }
 
 .site-title {
-  font-weight: 900;
-  font-size: 42px;
-  color: var(--main-color);
-  font-family: "HS LunaObscura";
-  font-feature-settings: "ss01" 1;
-
   text-shadow: 8px 8px 0px #32568b46;
 }
 
 .horizontal-divider {
-  border-top: 2px dashed #465481;
+  border-top: 2px solid #1e78ff41;
 
   margin-top: 16px;
   margin-bottom: 16px;
