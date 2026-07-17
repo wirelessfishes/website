@@ -6,6 +6,8 @@
   --blue: #1e78ff;
   --white: #f5f5f5;
   --black: #171717;
+  --red: #ff1e1e;
+  --error-red: #ec5757;
   --bg: #1c285e;
 
   color: var(--white);
@@ -37,19 +39,22 @@ h1 {
 
   font-family: "HS LunaObscura";
   font-feature-settings: "ss01" 1;
+  font-weight: bold;
   margin-block: 0.67em;
   font-size: 42px;
 }
 
 h2 {
-  font-family: "HS LunaObscura";
+  font-family: "Stack Sans Text";
   font-feature-settings: "ss01" 1;
   font-size: 26px;
+  font-weight: bold;
   margin-block: 0.5em;
 }
 
 h3 {
   font-family: "Stack Sans Text";
+  font-weight: bold;
   font-size: 21px;
 }
 
@@ -98,6 +103,7 @@ textarea:focus {
   background: linear-gradient(#0a5cb9, #1672db);
   padding: 2px 14px;
   transform: skew(-45deg);
+  text-shadow: 1px 1px 0px transparent;
 
   span {
     display: inline-block;
@@ -108,7 +114,6 @@ textarea:focus {
 .button:hover:not(:disabled) {
   color: var(--black) !important;
   background: var(--white);
-  border-color: white;
 }
 
 .button:disabled,
@@ -139,8 +144,18 @@ textarea:focus {
 }
 
 .horizontal-divider {
-  border-top: 2px solid #1e78ff41;
+  border-top: 2px solid var(--blue);
 
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.nav-spacer {
+  width: 4px;
+  transform: skew(-45deg);
+  background-color: var(--blue);
+}
+
+.error-text {
+  color: var(--error-red);
 }

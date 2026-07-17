@@ -23,6 +23,7 @@
 
     {# base styles #}
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="/assets/favicon.png">
 
     {% block head %}
     {% endblock %}
@@ -41,9 +42,12 @@
 
       <nav style="display: flex; gap: 4px; padding: 0px 12px">
         <a class="button" href="/"><span>Home</span></a>
+        <a class="button" href="/shark"><span>Sharks</span></a>
         <a class="button" href="/collections"><span>Collections</span></a>
-        <span class="button_disabled" style="color: grey"><span>Guestbook</span></span>
-        <span class="button_disabled" style="color: grey"><span>Sharks</span></span>
+        <span class="button_disabled"><span>Guestbook</span></span>
+        <span class="nav-spacer"></span>
+        <span class="nav-spacer"></span>
+        <span class="nav-spacer"></span>
         <a class="button" class="button" href="https://git.wireless.fish/sharky"><span>Git ↗</span></a>
       </nav>
     </header>

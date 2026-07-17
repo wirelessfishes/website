@@ -28,9 +28,20 @@ async function getSCafeData() {
   return data;
 }
 
-let data = await getSCafeData();
+try {
+  let data = await getSCafeData();
 
-document.getElementById("statuscafe-username").innerHTML =
-  '<a href="https://status.cafe/users/sharky" target="_blank">' + data.author + "</a> ";
-document.getElementById("statuscafe-ago").textContent = data.timeAgo;
-document.getElementById("statuscafe-content").textContent = `"${data.content}"`;
+  document.getElementById("statuscafe-username").innerHTML =
+    '<a href="https://status.cafe/users/sharky" target="_blank">' + data.author + "</a> ";
+  document.getElementById("statuscafe-ago").textContent = data.timeAgo;
+  document.getElementById("statuscafe-content").textContent = `"${data.content}"`;
+} catch (e) {
+  console.log(e);
+  let el = document.getElementById("statuscafe");
+
+  if (e.toString().includes("NetworkError")) {
+    el.innerHTML = '<span class="error-text">[Network error]</span> while trying to fetch from status.cafe';
+  } else {
+    el.innerHTML = "Some sort of error has occoured while fetching data from status.cafe";
+  }
+}
