@@ -19,7 +19,7 @@
 html {
   background-color: var(--bg);
   background: url("/assets/wireless_fish_bg.jpg");
-  background-size: contain;
+  background-size: contain cover;
   padding: 16px;
 }
 
@@ -83,17 +83,22 @@ p + p {
 
 textarea {
   color: var(--white);
-  font-family: "Inter";
+  font-family: "Stack Sans Text";
+  resize: vertical;
 
   padding: 2px 4px;
-  border: 1px solid var(--white);
-  border-radius: 2px;
-  background-color: #314c85;
+  border: 2px solid var(--blue);
+  background-color: #263a66;
 }
 
 textarea:focus {
   outline: none;
-  border-color: var(--blue);
+  border-color: var(--white);
+  background-color: #2f487e;
+}
+
+button {
+  font-family: "Stack Sans Text";
 }
 
 .button,
@@ -101,6 +106,7 @@ textarea:focus {
   color: #aecaee !important;
   text-decoration: none;
   background: linear-gradient(#0a5cb9, #1672db);
+  border: none;
   padding: 2px 14px;
   transform: skew(-45deg);
   text-shadow: 1px 1px 0px transparent;
@@ -114,6 +120,7 @@ textarea:focus {
 .button:hover:not(:disabled) {
   color: var(--black) !important;
   background: var(--white);
+  cursor: pointer;
 }
 
 .button:disabled,

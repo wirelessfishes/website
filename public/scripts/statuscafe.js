@@ -9,7 +9,6 @@ function getSCafeCookie() {
 
 async function getSCafeData() {
   let cookie = getSCafeCookie();
-
   if (cookie) {
     return cookie;
   }
@@ -42,6 +41,7 @@ try {
   if (e.toString().includes("NetworkError")) {
     el.innerHTML = '<span class="error-text">[Network error]</span> while trying to fetch from status.cafe';
   } else {
-    el.innerHTML = "Some sort of error has occoured while fetching data from status.cafe";
+    el.innerHTML =
+      'Some sort of <span class="error-text">error</span> has occoured while fetching data from status.cafe';
   }
 }

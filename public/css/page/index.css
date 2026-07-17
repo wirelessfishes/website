@@ -1,6 +1,6 @@
 .notify {
-  display: grid;
-  grid-template-columns: 9fr 1fr;
+  display: flex;
+  flex-direction: row;
   gap: 1em;
 }
 
@@ -30,4 +30,13 @@
 
 .noelle:hover {
   filter: invert(100%);
+}
+
+#notifysend {
+  margin: 0px 14px;
+  flex: 1;
+}
+
+#notifyinput {
+  flex: 10;
 }
