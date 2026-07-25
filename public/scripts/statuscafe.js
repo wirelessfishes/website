@@ -1,16 +1,12 @@
-import { setCookieMinutes, getCookie } from "./module/cookie.js";
+import { setLocalStorageMinutes, getLocalStorage } from "./module/localstorage.js";
 
-const cookie_name = "scafe";
-const cookie_minutes = 5;
-
-function getSCafeCookie() {
-  return JSON.parse(getCookie(cookie_name));
-}
+const cache_key = "scafe";
+const cache_expire_minutes = 5;
 
 async function getSCafeData() {
-  let cookie = getSCafeCookie();
-  if (cookie) {
-    return cookie;
+  let cache_data = getLocalStorage(cache_key);
+  if (cache_data) {
+    return JSON.parse(cache_data);
   }
 
   let response = await fetch("https://status.cafe/users/sharky/status.json");
@@ -22,7 +18,7 @@ async function getSCafeData() {
     content: response.content,
   };
 
-  setCookieMinutes(cookie_name, JSON.stringify(data), cookie_minutes);
+  setLocalStorageMinutes(cache_key, JSON.stringify(data), cache_expire_minutes);
 
   return data;
 }

@@ -1,9 +1,9 @@
-import { getCookie, setCookieMinutes } from "./module/cookie.js";
+import { setLocalStorageMinutes, getLocalStorage } from "./module/localstorage.js";
 
 const recent_tracks_api_url = "https://api.wireless.fish/lastfm/recent?user=sharkyblacktip";
 const info_api_url = "https://api.wireless.fish/lastfm/info?user=sharkyblacktip";
 
-const cookie_name = "lastfm";
+const cache_key = "lastfm";
 
 function formatAgo(seconds) {
   if (seconds < 60) {
@@ -17,12 +17,8 @@ function formatAgo(seconds) {
   }
 }
 
-function getDataCookie() {
-  return getCookie(cookie_name);
-}
-
 async function getData() {
-  let fmcookie = getDataCookie();
+  let fmcookie = getLocalStorage(cache_key);
   if (fmcookie) {
     return JSON.parse(fmcookie);
   }
@@ -42,7 +38,7 @@ async function getData() {
     data.date = formatAgo(Date.now() / 1000 - data.date);
   }
 
-  setCookieMinutes(cookie_name, JSON.stringify(data), 1);
+  setLocalStorageMinutes(cache_key, JSON.stringify(data), 1);
 
   return data;
 }
