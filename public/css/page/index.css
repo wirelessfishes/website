@@ -26,10 +26,28 @@
 .eightyeight a {
   width: 88px;
   height: 31px;
+  font-weight: bold;
+  color: var(--error-red);
+  font-style: italic;
+  letter-spacing: 2px;
 }
 
 .noelle:hover {
   filter: invert(100%);
+}
+
+.thing-i-did {
+  border: 2px solid var(--white);
+  width: fit-content;
+}
+
+.thing-i-did_title {
+  background-color: var(--blue);
+  font-weight: bold;
+  padding: 0px 8px;
+  font-size: larger;
+  font-family: "Stack Sans Text";
+  font-feature-settings: "ss01" 1;
 }
 
 #notifysend {

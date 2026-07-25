@@ -193,17 +193,3 @@ button {
 .warning-text {
   color: var(--warning-orange);
 }
-
-.thing-i-did {
-  border: 2px solid var(--white);
-  width: fit-content;
-}
-
-.thing-i-did_title {
-  background-color: var(--blue);
-  font-weight: bold;
-  padding: 0px 8px;
-  font-size: larger;
-  font-family: "Stack Sans Text";
-  font-feature-settings: "ss01" 1;
-}
