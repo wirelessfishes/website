@@ -1,0 +1,40 @@
+img {
+  width: 100%;
+  height: auto;
+}
+
+.latin-name {
+  opacity: 70%;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+table {
+  background: var(--bg);
+  border-collapse: collapse;
+  border-radius: 4px;
+}
+
+td,
+th {
+  padding: 4px 8px;
+  text-align: left;
+  border: 2px solid var(--blue);
+}
+
+.double-images {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  height: 200px;
+
+  img {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.single-image {
+  display: flex;
+  justify-content: center;
+}

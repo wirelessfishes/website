@@ -1,33 +1,38 @@
-@import url("/fonts/Inter/inter.css");
+@import url("/css/reset.css");
 @import url("/fonts/HS_LunaObscura/luna.css");
 @import url("/fonts/StackSansText/stack_sans_text.css");
+@import url("/fonts/AkmornGrotesque/akmorn_grotesque.css");
 
 :root {
   --blue: #1e78ff;
+  --blue-disabled: #1e314d;
   --white: #f5f5f5;
-  --black: #171717;
+  --black: #16171b;
+  --grey: #353841;
   --red: #ff1e1e;
   --error-red: #ec5757;
+  --orange: #ffb41f;
+  --warning-orange: #eebe5e;
   --bg: #1c285e;
-
-  color: var(--white);
-  font-family: "Stack Sans Text";
-  font-size: 16px;
-  text-shadow: 1px 1px 0px black;
 }
 
+/* === BASE ELEMENTS === */
+
 html {
+  color: var(--white);
+  font-family: "Akmorn Grotesque", sans-serif;
+  font-size: 16px;
+  word-spacing: -2px;
+
   background-color: var(--bg);
   background: url("/assets/wireless_fish_bg.jpg");
   background-size: contain cover;
-  padding: 16px;
 }
 
 body {
-  max-width: 1000px;
-
-  margin: auto;
-  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 body > section + section {
@@ -40,7 +45,6 @@ h1 {
   font-family: "HS LunaObscura";
   font-feature-settings: "ss01" 1;
   font-weight: bold;
-  margin-block: 0.67em;
   font-size: 42px;
 }
 
@@ -77,10 +81,6 @@ p + p {
   margin-top: 0.25em;
 }
 
-.link-button {
-  padding: 2px 5px;
-}
-
 textarea {
   color: var(--white);
   font-family: "Stack Sans Text";
@@ -97,8 +97,18 @@ textarea:focus {
   background-color: #2f487e;
 }
 
+section + section {
+  margin-top: 16px;
+}
+
+/* === INTERFACE === */
+
 button {
   font-family: "Stack Sans Text";
+}
+
+.link-button {
+  padding: 2px 5px;
 }
 
 .button,
@@ -127,7 +137,7 @@ button {
 .button_disabled,
 .button-action:disabled {
   color: #637286 !important;
-  background: #1a2844;
+  background: var(--blue-disabled);
   cursor: default;
 }
 
@@ -146,23 +156,54 @@ button {
   cursor: pointer;
 }
 
-.site-title {
-  text-shadow: 8px 8px 0px #32568b46;
-}
+/* === LAYOUT === */
 
-.horizontal-divider {
-  border-top: 2px solid var(--blue);
+.content {
+  width: 1000px;
+  padding: 16px 32px;
 
-  margin-top: 16px;
-  margin-bottom: 16px;
+  background-color: var(--black);
 }
 
 .nav-spacer {
   width: 4px;
   transform: skew(-45deg);
-  background-color: var(--blue);
+  background-color: var(--white);
+}
+
+/* === STYLE === */
+
+.site-header {
+  width: 100dvw;
+  padding: 16px;
+  background-color: var(--black);
+  border-bottom: 4px solid var(--blue);
+}
+
+.site-title {
+  font-style: italic;
+  text-align: center;
+  margin: 6px;
 }
 
 .error-text {
   color: var(--error-red);
+}
+
+.warning-text {
+  color: var(--warning-orange);
+}
+
+.thing-i-did {
+  border: 2px solid var(--white);
+  width: fit-content;
+}
+
+.thing-i-did_title {
+  background-color: var(--blue);
+  font-weight: bold;
+  padding: 0px 8px;
+  font-size: larger;
+  font-family: "Stack Sans Text";
+  font-feature-settings: "ss01" 1;
 }
