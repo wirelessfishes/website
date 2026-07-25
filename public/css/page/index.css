@@ -32,10 +32,6 @@
   letter-spacing: 2px;
 }
 
-.noelle:hover {
-  filter: invert(100%);
-}
-
 .thing-i-did {
   border: 2px solid var(--white);
   width: fit-content;
