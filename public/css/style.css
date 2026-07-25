@@ -159,7 +159,7 @@ button {
 /* === LAYOUT === */
 
 .content {
-  width: 1000px;
+  max-width: 1000px;
   padding: 16px 32px;
 
   background-color: var(--black);
