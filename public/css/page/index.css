@@ -50,6 +50,12 @@
   font-feature-settings: "ss01" 1;
 }
 
+.thing-i-did_subtitle {
+  font-family: "Akmorn Grotesque", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+
 #notifysend {
   margin: 0px 14px;
   flex: 1;

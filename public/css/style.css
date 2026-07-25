@@ -193,3 +193,7 @@ button {
 .warning-text {
   color: var(--warning-orange);
 }
+
+.orange-text {
+  color: var(--orange) !important;
+}
