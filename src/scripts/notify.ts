@@ -1,8 +1,10 @@
-const input = document.getElementById("notifyinput");
-const button = document.getElementById("notifysend");
-const btn_text = document.getElementById("notify-btn-content");
+import { getEl } from "./module/dom.js";
 
-function sleep(ms) {
+const input = getEl<HTMLInputElement>("notifyinput");
+const button = getEl<HTMLButtonElement>("notifysend");
+const btn_text = getEl("notify-btn-content");
+
+function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 

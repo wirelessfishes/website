@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/14573223/set-cookie-and-get-cookie-with-javascript
-export function setCookie(name, value, days) {
+export function setCookie(name: string, value: string, days: number) {
   var expires = ``;
   if (days) {
     var date = new Date();
@@ -9,7 +9,7 @@ export function setCookie(name, value, days) {
   document.cookie = name + `=` + (value || ``) + expires + `; path=/` + `;SameSite=None;Secure`;
 }
 
-export function setCookieMinutes(name, value, minutes) {
+export function setCookieMinutes(name: string, value: string, minutes: number) {
   var expires = ``;
   if (minutes) {
     var date = new Date();
@@ -19,7 +19,7 @@ export function setCookieMinutes(name, value, minutes) {
   document.cookie = name + `=` + (value || ``) + expires + `; path=/` + `;SameSite=None;Secure`;
 }
 
-export function getCookie(name) {
+export function getCookie(name: string): string | null {
   var nameEQ = name + `=`;
   var ca = document.cookie.split(`;`);
   for (var i = 0; i < ca.length; i++) {

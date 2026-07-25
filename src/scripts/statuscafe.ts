@@ -1,7 +1,14 @@
+import { getEl } from "./module/dom.js";
 import { setLocalStorageMinutes, getLocalStorage } from "./module/localstorage.js";
 
 const cache_key = "scafe";
 const cache_expire_minutes = 5;
+
+interface StatusCafe {
+  author: string;
+  timeAgo: string;
+  content: string;
+}
 
 async function getSCafeData() {
   let cache_data = getLocalStorage(cache_key);
@@ -9,13 +16,13 @@ async function getSCafeData() {
     return JSON.parse(cache_data);
   }
 
-  let response = await fetch("https://status.cafe/users/sharky/status.json");
-  response = await response.json();
+  const raw = await fetch("https://status.cafe/users/sharky/status.json");
+  const json: StatusCafe = await raw.json();
 
   let data = {
-    author: response.author,
-    timeAgo: response.timeAgo,
-    content: response.content,
+    author: json.author,
+    timeAgo: json.timeAgo,
+    content: json.content,
   };
 
   setLocalStorageMinutes(cache_key, JSON.stringify(data), cache_expire_minutes);
@@ -26,15 +33,15 @@ async function getSCafeData() {
 try {
   let data = await getSCafeData();
 
-  document.getElementById("statuscafe-username").innerHTML =
+  getEl("statuscafe-username").innerHTML =
     '<a href="https://status.cafe/users/sharky" target="_blank">' + data.author + "</a> ";
-  document.getElementById("statuscafe-ago").textContent = data.timeAgo;
-  document.getElementById("statuscafe-content").textContent = `"${data.content}"`;
+  getEl("statuscafe-ago").textContent = data.timeAgo;
+  getEl("statuscafe-content").textContent = `"${data.content}"`;
 } catch (e) {
   console.log(e);
-  let el = document.getElementById("statuscafe");
+  let el = getEl("statuscafe");
 
-  if (e.toString().includes("NetworkError")) {
+  if (e instanceof Error && e.toString().includes("NetworkError")) {
     el.innerHTML = '<span class="error-text">[Network error]</span> while trying to fetch from status.cafe';
   } else {
     el.innerHTML =

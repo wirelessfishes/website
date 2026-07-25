@@ -2,11 +2,20 @@
   "name": "website",
   "version": "1.0.0",
   "scripts": {
-    "build": "pnpm exec eleventy",
-    "dev": "pnpm exec eleventy --serve"
+    "typecheck": "tsc --noEmit",
+    "build:scripts": "esbuild \"src/scripts/*.ts\" --bundle --outdir=dist/scripts --format=esm",
+    "build": "pnpm run build:scripts && pnpm exec eleventy",
+    "dev:scripts": "esbuild \"src/scripts/*.ts\" --bundle --outdir=dist/scripts --format=esm --watch",
+    "dev": "pnpm run build:scripts && concurrently \"pnpm run dev:scripts\" \"pnpm exec eleventy --serve\""
   },
   "type": "module",
   "dependencies": {
     "@11ty/eleventy": "^3.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "concurrently": "^10.0.3",
+    "esbuild": "^0.28.1",
+    "typescript": "^7.0.2"
   }
 }
