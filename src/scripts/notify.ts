@@ -57,9 +57,9 @@ function onNotifyInput() {
   }
 }
 
-button.onclick = function () {
+button.onclick = async function () {
   try {
-    sendNotification();
+    await sendNotification();
   } catch (e) {
     btn_text.innerHTML = '<span class="error-text">ERROR</span>';
     button.disabled = false;
