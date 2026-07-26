@@ -1,4 +1,4 @@
-import { getEl } from "./module/dom";
+import { getEl } from "./module/dom.js";
 import {
   getRecentTracks,
   getNowPlaying,
@@ -10,7 +10,7 @@ import {
   UserInfoResponse,
   USERNAME,
   getUserAvatar,
-} from "./module/lastfm";
+} from "./module/lastfm.js";
 
 let last_now_playing: Track | null = null;
 
@@ -18,16 +18,26 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function trackCard(track: Track): string {
+function trackCard(track: Track, dynamic_bg?: boolean): string {
+  let dynamic_bg_str = "";
+  if (dynamic_bg) {
+    dynamic_bg_str = `
+    <div class="scrobble-dynamicbg">
+      <img loading="lazy" src="${getTrackCover(track)}" />
+    </div>
+    `;
+  }
+
   return `
-  <div class="scrobble-track">
-    <img src="${getTrackCover(track, "large")}" loading="lazy" class="scrobble-track_img" />
+  <div class="scrobble-track${dynamic_bg ? " scrobble-track_dynamic" : ""}">
+    <img src="${getTrackCover(track, "medium")}" loading="lazy" class="scrobble-track_img" />
 
     <div class="scrobble-track_info">
       <div class="scrobble-track_name">${track.name}</div>
       <div class="scrobble-track_artist">${track.artist["#text"]}</div>
-      <div class="scrobble-track_ago">${trackTimeAgo(track)}</div>
     </div>
+
+    ${dynamic_bg_str}
   </div>
   `;
 }
@@ -51,13 +61,13 @@ async function updateActivity() {
   const now_playing = getNowPlaying(tracks);
 
   if (now_playing && now_playing.mbid != last_now_playing?.mbid) {
-    activity_container.innerHTML = trackCard(now_playing);
+    activity_container.innerHTML = trackCard(now_playing, true);
     last_now_playing = now_playing;
   } else if (!now_playing) {
     const last_played = getLastPlayed(tracks);
 
     if (last_played) {
-      activity_container.innerHTML = trackCard(last_played);
+      activity_container.innerHTML = trackCard(last_played, true);
     } else {
       activity_container.innerHTML = "Something went wrong :(";
     }
@@ -66,7 +76,7 @@ async function updateActivity() {
 
 async function updateActivityLoop(delay_ms: number) {
   while (true) {
-    await updateActivity();
+    await updateActivity().catch(console.error);
     await sleep(delay_ms);
   }
 }
@@ -89,6 +99,19 @@ async function render() {
   user_info_container.innerHTML = userCard(user_info);
 }
 
-render();
+render().catch((error) => {
+  console.error("Failed to render scrobbles:", error);
+
+  const recent_container = getEl("scrobbles-recent");
+  const user_info_container = getEl("scrobbles-info");
+
+  if (recent_container) {
+    recent_container.innerHTML = "Failed to load scrobbles.";
+  }
+
+  if (user_info_container) {
+    user_info_container.innerHTML = "Failed to load user info.";
+  }
+});
 
 updateActivityLoop(15 * 1000); // 15 seconds

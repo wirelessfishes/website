@@ -1,7 +1,10 @@
 #scrobbles-recent {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 8px;
+
+  max-height: 400px;
+  max-width: 512px;
+  overflow-x: scroll;
 }
 
 .scrobble-track {
@@ -9,54 +12,67 @@
 
   display: flex;
   overflow: hidden;
+  position: relative;
+  z-index: 10;
 }
 
-.scrobble-track_info,
+.scrobble-track_dynamic {
+  background: transparent;
+  text-shadow: 1px 1px 2px var(--black);
+}
+
+.scrobble-track_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: inherit;
+}
+
 .scrobble-user_info {
   display: flex;
   flex-direction: column;
-  padding: 4px 8px;
   justify-content: center;
+  padding: 4px 8px;
 }
 
 .scrobble-track_name {
   display: block;
-  min-width: 0;
-  font-size: larger;
   font-family: "Stack Sans Text";
   font-weight: bold;
+  min-width: 0;
 
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.scrobble-track_artist {
+  z-index: inherit;
 }
 
 .scrobble-track_ago {
-  opacity: 75%;
   font-style: italic;
+  opacity: 0.75;
 }
 
 .scrobble-track_img,
 .scrobble-user_img {
-  aspect-ratio: 1;
-  width: 100px;
-  object-fit: cover;
-
-  margin-right: 8px;
-
   background-color: var(--black);
   background-image: url("/assets/placeholder.svg");
-  background-size: 30%;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: 30%;
+  margin-right: 8px;
+}
+
+.scrobble-track_img {
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 64px;
+  z-index: inherit;
 }
 
 .scrobble-user_img {
+  aspect-ratio: 1;
   border-radius: 100%;
+  object-fit: cover;
   overflow: hidden;
+  width: 100px;
 }
 
 .scrobble-user {
@@ -65,4 +81,14 @@
 
 .scrobble-user_name {
   width: fit-content;
+}
+
+.scrobble-dynamicbg {
+  background-position: center;
+  display: inline-block;
+  filter: blur(3px);
+  position: absolute;
+  rotate: 25deg;
+  scale: 400%;
+  z-index: 0;
 }

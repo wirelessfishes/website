@@ -20,10 +20,10 @@
 }
 
 body {
-  /* 4. Increase line-height */
-  line-height: 1.5;
   /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
+  /* 4. Increase line-height */
+  line-height: 1.5;
 }
 
 /* 6. Improve media defaults */

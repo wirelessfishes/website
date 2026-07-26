@@ -24,12 +24,12 @@
 
 .eightyeight img,
 .eightyeight a {
-  width: 88px;
-  height: 31px;
-  font-weight: bold;
   color: var(--error-red);
   font-style: italic;
+  font-weight: bold;
+  height: 31px;
   letter-spacing: 2px;
+  width: 88px;
 }
 
 .thing-i-did {
@@ -39,11 +39,11 @@
 
 .thing-i-did_title {
   background-color: var(--blue);
-  font-weight: bold;
-  padding: 0px 8px;
-  font-size: larger;
   font-family: "Stack Sans Text";
   font-feature-settings: "ss01" 1;
+  font-size: larger;
+  font-weight: bold;
+  padding: 0px 8px;
 }
 
 .thing-i-did_subtitle {
@@ -53,8 +53,8 @@
 }
 
 #notifysend {
-  margin: 0px 14px;
   flex: 1;
+  margin: 0px 14px;
 }
 
 #notifyinput {

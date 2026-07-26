@@ -4,3 +4,4 @@ dist
 public/scripts
 
 .DS_Store
+.vscode
