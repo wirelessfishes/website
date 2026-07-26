@@ -5,11 +5,10 @@ import {
   getUserInfo,
   Track,
   getLastPlayed,
-  trackTimeAgo,
   getTrackCover,
   UserInfoResponse,
-  USERNAME,
   getUserAvatar,
+  trackTimeAgo,
 } from "./module/lastfm.js";
 
 let last_now_playing: Track | null = null;
@@ -30,7 +29,7 @@ function trackCard(track: Track, dynamic_bg?: boolean): string {
 
   return `
   <div class="scrobble-track${dynamic_bg ? " scrobble-track_dynamic" : ""}">
-    <img src="${getTrackCover(track, "medium")}" loading="lazy" class="scrobble-track_img" />
+    <img src="${getTrackCover(track, "large")}" loading="lazy" class="scrobble-track_img" />
 
     <div class="scrobble-track_info">
       <div class="scrobble-track_name">${track.name}</div>
@@ -59,14 +58,17 @@ async function updateActivity() {
   const tracks = await getRecentTracks(1);
   const activity_container = getEl("scrobbles-activity");
   const now_playing = getNowPlaying(tracks);
+  const activity_title = getEl<HTMLHeadingElement>("scrobbles-activity_title");
 
   if (now_playing && now_playing.mbid != last_now_playing?.mbid) {
+    activity_title.textContent = `Latest Activity (${trackTimeAgo(now_playing)})`;
     activity_container.innerHTML = trackCard(now_playing, true);
     last_now_playing = now_playing;
   } else if (!now_playing) {
     const last_played = getLastPlayed(tracks);
 
     if (last_played) {
+      activity_title.textContent = `Latest Activity (${trackTimeAgo(last_played)})`;
       activity_container.innerHTML = trackCard(last_played, true);
     } else {
       activity_container.innerHTML = "Something went wrong :(";

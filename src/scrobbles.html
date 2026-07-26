@@ -14,10 +14,10 @@ extra_css:
   <p>This is what I've been listening to recently <noscript>JAVASCRIPT REQUIRED</noscript></p>
 </section>
 
-<section style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+<section style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
   <div>
     <section>
-      <h3>Latest activity</h3>
+      <h3 id="scrobbles-activity_title">Latest activity</h3>
       <div id="scrobbles-activity">Loading activity...</div>
     </section>
 
@@ -29,7 +29,11 @@ extra_css:
 
   <section>
     <h3>User info</h3>
-    <div id="scrobbles-info">Loading user info...</div>
+    <section id="scrobbles-info">Loading user info...</section>
+    <h3>Top tracks (90 days)</h3>
+    <section id="scrobbles-info_tracks">Loading top tracks...</section>
+    <h3>Top artists (90 days)</h3>
+    <section id="scrobbles-info_artists">Loading top artists...</section>
   </section>
 </section>
 
