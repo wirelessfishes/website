@@ -85,7 +85,7 @@
 .scrobble-dynamicbg {
   background-position: center;
   display: inline-block;
-  filter: blur(3px) brightness(50%) saturate(120%);
+  filter: blur(3px) brightness(60%) saturate(120%);
   position: absolute;
   rotate: 40deg;
   scale: 350%;
