@@ -1,0 +1,68 @@
+#scrobbles-recent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.scrobble-track {
+  background-color: var(--grey);
+
+  display: flex;
+  overflow: hidden;
+}
+
+.scrobble-track_info,
+.scrobble-user_info {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 8px;
+  justify-content: center;
+}
+
+.scrobble-track_name {
+  display: block;
+  min-width: 0;
+  font-size: larger;
+  font-family: "Stack Sans Text";
+  font-weight: bold;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scrobble-track_artist {
+}
+
+.scrobble-track_ago {
+  opacity: 75%;
+  font-style: italic;
+}
+
+.scrobble-track_img,
+.scrobble-user_img {
+  aspect-ratio: 1;
+  width: 100px;
+  object-fit: cover;
+
+  margin-right: 8px;
+
+  background-color: var(--black);
+  background-image: url("/assets/placeholder.svg");
+  background-size: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.scrobble-user_img {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.scrobble-user {
+  display: flex;
+}
+
+.scrobble-user_name {
+  width: fit-content;
+}

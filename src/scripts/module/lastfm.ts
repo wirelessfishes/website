@@ -1,11 +1,11 @@
 import { setLocalStorageMinutes, getLocalStorage, setLocalStorageSeconds } from "./localstorage.js";
 
 // for api types check https://github.com/wirelessfishes/website-backend
-interface Track {
+export interface Track {
   "@attr"?: { nowplaying: "true" };
   "artist": { "#text": string; "mbid": string };
   "album": { "#text": string; "mbid": string };
-  "image": Array<{ "size": string; "#text": string }>;
+  "image": Array<{ "size": "small" | "medium" | "large" | "extralarge"; "#text": string }>;
   "date"?: { "uts": string; "#text": string };
   "url": string;
   "name": string;
@@ -13,7 +13,7 @@ interface Track {
   "streamable": "0" | "1";
   "loved"?: "0" | "1";
 }
-interface RecentTracksResponse {
+export interface RecentTracksResponse {
   recenttracks: {
     "@attr": {
       page: string;
@@ -25,13 +25,13 @@ interface RecentTracksResponse {
     "track": Track[];
   };
 }
-interface UserInfoResponse {
+export interface UserInfoResponse {
   user: {
     id: string;
     name: string;
     realname: string;
     url: string;
-    image: string;
+    image: Array<{ "size": "small" | "medium" | "large" | "extralarge"; "#text": string }>;
     country: string;
     age: string;
     gender: string;
@@ -49,7 +49,7 @@ interface UserInfoResponse {
 const API_RECENT_TRACKS = "https://api.wireless.fish/lastfm/recent";
 const API_INFO = "https://api.wireless.fish/lastfm/info";
 
-const USERNAME = "sharkyblacktip";
+export const USERNAME = "sharkyblacktip";
 
 // === API FUNCTIONS ===
 
@@ -119,4 +119,31 @@ export function getLastPlayed(tracks: RecentTracksResponse): Track | null {
 
 export function getTrackCover(track: Track, size: "small" | "medium" | "large" | "extralarge" = "large"): string {
   return track.image.find((img) => img.size === size)?.["#text"] ?? "";
+}
+
+export function getUserAvatar(info: UserInfoResponse, size: "small" | "medium" | "large" | "extralarge" = "large"): string {
+  return info.user.image.find((img) => img.size === size)?.["#text"] ?? "";
+}
+
+export function formatAgo(seconds: number): string {
+  if (seconds < 0) return "just now";
+  const units: Array<[number, string]> = [
+    [86400, "day"],
+    [3600, "hour"],
+    [60, "minute"],
+    [1, "second"],
+  ];
+  for (const [threshold, unit] of units) {
+    if (seconds >= threshold) {
+      const value = Math.floor(seconds / threshold);
+      return `${value} ${unit}${value !== 1 ? "s" : ""} ago`;
+    }
+  }
+  return "just now";
+}
+
+export function trackTimeAgo(track: Track): string {
+  if (!track.date) return "right now";
+  const secondsAgo = Math.floor(Date.now() / 1000 - Number(track.date.uts));
+  return formatAgo(secondsAgo);
 }

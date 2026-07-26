@@ -7,4 +7,26 @@ extra_css:
   - /css/page/scrobbles.css
 ---
 
-<h2>Lastfm</h2>
+<script src="/scripts/scrobbles.js" defer></script>
+
+<section>
+  <h2>Scrobbles</h2>
+  <p>This is what I've been listening to recently <noscript>JAVASCRIPT REQUIRED</noscript></p>
+</section>
+
+<section style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+  <div>
+    <h3>Activity</h3>
+    <div id="scrobbles-activity">Loading activity...</div>
+  </div>
+
+  <div>
+    <h3>User info</h3>
+    <div id="scrobbles-info">Loading user info...</div>
+  </div>
+</section>
+
+<section>
+  <h3>Recent tracks</h3>
+  <div id="scrobbles-recent">Loading recent tracks...</div>
+</section>
