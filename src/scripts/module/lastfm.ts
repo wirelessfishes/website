@@ -1,59 +1,33 @@
 import { setLocalStorageMinutes, getLocalStorage, setLocalStorageSeconds } from "./localstorage.js";
+import type {
+  Scrobble,
+  RecentTracks,
+  UserInfo,
+  LastFmError,
+  LastFmImage,
+  LastFmImageSize,
+  TopTracks,
+  TopAlbums,
+  TopArtists,
+  LastFmPeriod,
+  Track,
+  Artist,
+} from "../types/lastfm.js";
 
-// for api types check https://github.com/wirelessfishes/website-backend
-export interface Track {
-  "@attr"?: { nowplaying: "true" };
-  "artist": { "#text": string; "mbid": string };
-  "album": { "#text": string; "mbid": string };
-  "image": Array<{ "size": "small" | "medium" | "large" | "extralarge"; "#text": string }>;
-  "date"?: { "uts": string; "#text": string };
-  "url": string;
-  "name": string;
-  "mbid": string;
-  "streamable": "0" | "1";
-  "loved"?: "0" | "1";
-}
-export interface RecentTracksResponse {
-  recenttracks: {
-    "@attr": {
-      page: string;
-      total: string;
-      user: string;
-      perPage: string;
-      totalPages: string;
-    };
-    "track": Track[];
-  };
-}
-export interface UserInfoResponse {
-  user: {
-    id: string;
-    name: string;
-    realname: string;
-    url: string;
-    image: Array<{ "size": "small" | "medium" | "large" | "extralarge"; "#text": string }>;
-    country: string;
-    age: string;
-    gender: string;
-    subscriber: string;
-    playcount: string;
-    playlists: string;
-    bootstrap: string;
-    registered: {
-      "unixtime": string;
-      "#text": string;
-    };
-  };
-}
+export type { Scrobble, RecentTracks, UserInfo, LastFmImageSize };
 
-const API_RECENT_TRACKS = "https://api.wireless.fish/lastfm/recent";
-const API_INFO = "https://api.wireless.fish/lastfm/info";
+const API_PROXY = "https://api.wireless.fish/lastfm/proxy";
+const API_RECENT_TRACKS = API_PROXY + "/user.getRecentTracks";
+const API_INFO = API_PROXY + "/user.getInfo";
+const API_TOP_TRACKS = API_PROXY + "/user.getTopTracks";
+const API_TOP_ALBUMS = API_PROXY + "/user.getTopAlbums";
+const API_TOP_ARTISTS = API_PROXY + "/user.getTopArtists";
 
 export const USERNAME = "sharkyblacktip";
 
 // === API FUNCTIONS ===
 
-async function api_getRecentTracks(username: string, limit?: number): Promise<RecentTracksResponse> {
+async function api_getRecentTracks(username: string, limit?: number): Promise<RecentTracks> {
   const url = new URL(API_RECENT_TRACKS);
   url.searchParams.set("user", username);
   if (limit) url.searchParams.set("limit", String(limit));
@@ -65,10 +39,15 @@ async function api_getRecentTracks(username: string, limit?: number): Promise<Re
     throw new Error(`Backend error while trying to fetch recent tracks: ${response.status}`);
   }
 
-  return await response.json();
+  const data: RecentTracks | LastFmError = await response.json();
+  if ("error" in data) {
+    throw new Error(`Last.fm error ${data.error}: ${data.message}`);
+  }
+
+  return data;
 }
 
-async function api_getUserInfo(username: string): Promise<UserInfoResponse> {
+async function api_getUserInfo(username: string): Promise<UserInfo> {
   const url = new URL(API_INFO);
   url.searchParams.set("user", username);
 
@@ -78,12 +57,83 @@ async function api_getUserInfo(username: string): Promise<UserInfoResponse> {
     throw new Error(`Backend error while trying to fetch user info: ${response.status}`);
   }
 
-  return await response.json();
+  const data: UserInfo | LastFmError = await response.json();
+  if ("error" in data) {
+    throw new Error(`Last.fm error ${data.error}: ${data.message}`);
+  }
+
+  return data;
+}
+
+async function api_getTopTracks(username: string, limit?: number, period?: LastFmPeriod): Promise<TopTracks> {
+  const url = new URL(API_TOP_TRACKS);
+  url.searchParams.set("user", username);
+
+  if (period) url.searchParams.set("period", period);
+  if (limit) url.searchParams.set("limit", String(limit));
+
+  // Actually parse the stuff
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Backend error while trying to fetch top tracks: ${response.status}`);
+  }
+
+  const data: TopTracks | LastFmError = await response.json();
+  if ("error" in data) {
+    throw new Error(`Last.fm error ${data.error}: ${data.message}`);
+  }
+
+  return data;
+}
+
+async function api_getTopArtists(username: string, limit?: number, period?: LastFmPeriod): Promise<TopArtists> {
+  const url = new URL(API_TOP_ARTISTS);
+  url.searchParams.set("user", username);
+
+  if (period) url.searchParams.set("period", period);
+  if (limit) url.searchParams.set("limit", String(limit));
+
+  // Actually parse the stuff
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Backend error while trying to fetch top artists: ${response.status}`);
+  }
+
+  const data: TopArtists | LastFmError = await response.json();
+  if ("error" in data) {
+    throw new Error(`Last.fm error ${data.error}: ${data.message}`);
+  }
+
+  return data;
+}
+
+async function api_getTopAlbums(username: string, limit?: number, period?: LastFmPeriod): Promise<TopAlbums> {
+  const url = new URL(API_TOP_ALBUMS);
+  url.searchParams.set("user", username);
+
+  if (period) url.searchParams.set("period", period);
+  if (limit) url.searchParams.set("limit", String(limit));
+
+  // Actually parse the stuff
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Backend error while trying to fetch top albums: ${response.status}`);
+  }
+
+  const data: TopAlbums | LastFmError = await response.json();
+  if ("error" in data) {
+    throw new Error(`Last.fm error ${data.error}: ${data.message}`);
+  }
+
+  return data;
 }
 
 // === WRAPPER FUNCTIONS ===
 
-export async function getRecentTracks(limit?: number): Promise<RecentTracksResponse> {
+export async function getRecentTracks(limit?: number): Promise<RecentTracks> {
   const cacheKey = limit ? `lastfm-recent-${limit}` : "lastfm-recent";
 
   const cached = getLocalStorage(cacheKey);
@@ -95,7 +145,7 @@ export async function getRecentTracks(limit?: number): Promise<RecentTracksRespo
   return data;
 }
 
-export async function getUserInfo(): Promise<UserInfoResponse> {
+export async function getUserInfo(): Promise<UserInfo> {
   const cacheKey = `lastfm-info`;
 
   const cached = getLocalStorage(cacheKey);
@@ -107,22 +157,71 @@ export async function getUserInfo(): Promise<UserInfoResponse> {
   return data;
 }
 
+export async function getTopTracks(limit?: number, period?: LastFmPeriod): Promise<TopTracks> {
+  const cacheKey = limit ? `lastfm-toptracks-${limit}` : "lastfm-toptracks";
+
+  const cached = getLocalStorage(cacheKey);
+  if (cached) return JSON.parse(cached);
+
+  const data = await api_getTopTracks(USERNAME, limit, period);
+  setLocalStorageMinutes(cacheKey, JSON.stringify(data), 1);
+  return data;
+}
+
+export async function getTopAlbums(limit?: number, period?: LastFmPeriod): Promise<TopAlbums> {
+  const cacheKey = limit ? `lastfm-topalbums-${limit}` : "lastfm-topalbums";
+
+  const cached = getLocalStorage(cacheKey);
+  if (cached) return JSON.parse(cached);
+
+  const data = await api_getTopAlbums(USERNAME, limit, period);
+  setLocalStorageMinutes(cacheKey, JSON.stringify(data), 1);
+  return data;
+}
+
+export async function getTopArtists(limit?: number, period?: LastFmPeriod): Promise<TopArtists> {
+  const cacheKey = limit ? `lastfm-topartists-${limit}` : "lastfm-topartists";
+
+  const cached = getLocalStorage(cacheKey);
+  if (cached) return JSON.parse(cached);
+
+  const data = await api_getTopArtists(USERNAME, limit, period);
+  setLocalStorageMinutes(cacheKey, JSON.stringify(data), 1);
+  return data;
+}
+
 // === HELPER FUNCTIONS ===
 
-export function getNowPlaying(tracks: RecentTracksResponse): Track | null {
+const LASTFM_PLACEHOLDER_HASH = "2a96cbd8b46e442fc41c2b86b821562f";
+
+function resolveImage(images: LastFmImage[], size: LastFmImageSize): string {
+  const url = images.find((img) => img.size === size)?.["#text"] ?? "";
+  if (url.includes(LASTFM_PLACEHOLDER_HASH)) return "";
+  return url;
+}
+
+export function getNowPlaying(tracks: RecentTracks): Scrobble | null {
   return tracks.recenttracks.track.find((t) => t["@attr"]?.nowplaying === "true") ?? null;
 }
 
-export function getLastPlayed(tracks: RecentTracksResponse): Track | null {
+export function getLastPlayed(tracks: RecentTracks): Scrobble | null {
   return tracks.recenttracks.track.find((t) => !t["@attr"]) ?? null;
 }
 
-export function getTrackCover(track: Track, size: "small" | "medium" | "large" | "extralarge" = "large"): string {
-  return track.image.find((img) => img.size === size)?.["#text"] ?? "";
+export function getScrobbleCover(track: Scrobble, size: LastFmImageSize = "large"): string {
+  return resolveImage(track.image, size);
 }
 
-export function getUserAvatar(info: UserInfoResponse, size: "small" | "medium" | "large" | "extralarge" = "large"): string {
-  return info.user.image.find((img) => img.size === size)?.["#text"] ?? "";
+export function getTrackCover(track: Track, size: LastFmImageSize = "large"): string {
+  return resolveImage(track.image, size);
+}
+
+export function getArtistImage(artist: Artist, size: LastFmImageSize = "large"): string {
+  return resolveImage(artist.image, size);
+}
+
+export function getUserAvatar(info: UserInfo, size: LastFmImageSize = "large"): string {
+  return resolveImage(info.user.image, size);
 }
 
 export function formatAgo(seconds: number): string {
@@ -142,7 +241,7 @@ export function formatAgo(seconds: number): string {
   return "just now";
 }
 
-export function trackTimeAgo(track: Track): string {
+export function trackTimeAgo(track: Scrobble): string {
   if (!track.date) return "right now";
   const secondsAgo = Math.floor(Date.now() / 1000 - Number(track.date.uts));
   return formatAgo(secondsAgo);

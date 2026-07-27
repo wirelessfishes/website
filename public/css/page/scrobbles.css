@@ -2,9 +2,18 @@
   display: grid;
   gap: 8px;
 
-  max-height: 400px;
-  max-width: 512px;
+  max-height: 664px;
   overflow-x: scroll;
+}
+
+#scrobbles-info_tracks,
+#scrobbles-info_artists {
+  background-color: var(--grey);
+  display: grid;
+  gap: 8px;
+  max-height: 290px;
+  overflow-x: scroll;
+  padding: 2px 4px;
 }
 
 .scrobble-track {
@@ -61,6 +70,7 @@
 
 .scrobble-user_img {
   aspect-ratio: 1;
+  border-radius: 100%;
   object-fit: cover;
   overflow: hidden;
   width: 100px;
@@ -69,6 +79,7 @@
 .scrobble-user {
   display: flex;
   justify-content: center;
+  margin: 16px 0px;
 }
 
 .scrobble-user_info {
