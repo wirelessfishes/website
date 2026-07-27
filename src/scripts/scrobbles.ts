@@ -175,6 +175,4 @@ render().catch((error) => {
   }
 });
 
-updateActivity();
-
-// updateActivityLoop(15 * 1000); // 15 seconds
+updateActivityLoop(15 * 1000); // 15 seconds
