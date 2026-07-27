@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "Akmorn Grotesque";
   font-display: swap;
-  src: url("/fonts/AkmornGrotesque/AkmornGrotesqueDemo-Regular.ttf"), format("ttf");
+  font-family: "Akmorn Grotesque";
+  src: url("/fonts/AkmornGrotesque/AkmornGrotesqueDemo-Regular.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: "Akmorn Grotesque";
   font-display: swap;
+  font-family: "Akmorn Grotesque";
   font-style: italic;
-  src: url("/fonts/AkmornGrotesque/AkmornGrotesqueDemo-Italic.ttf"), format("ttf");
+  src: url("/fonts/AkmornGrotesque/AkmornGrotesqueDemo-Italic.ttf") format("ttf");
 }
