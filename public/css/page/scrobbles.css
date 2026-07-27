@@ -8,7 +8,8 @@
 
 #scrobbles-info_tracks,
 #scrobbles-info_artists {
-  background-color: var(--grey);
+  background-color: var(--darkgrey);
+  border-radius: 6px;
   display: grid;
   gap: 8px;
   max-height: 290px;
@@ -16,13 +17,28 @@
   padding: 2px 4px;
 }
 
-.scrobble-track {
-  background-color: var(--grey);
+.scrobble-track,
+.scrobble-track:visited {
+  background-color: var(--darkgrey);
+  border-radius: 6px;
+  color: var(--white);
 
   display: flex;
   overflow: hidden;
+  padding: 0px;
   position: relative;
+  text-decoration: none;
+  transition: 150ms;
   z-index: 10;
+}
+
+.scrobble-track:hover {
+  background-color: var(--grey);
+  filter: brightness(120%);
+
+  .scrobble-track_img {
+    rotate: -5deg;
+  }
 }
 
 .scrobble-track_dynamic {
@@ -64,6 +80,7 @@
 .scrobble-track_img {
   aspect-ratio: 1;
   object-fit: cover;
+  transition: 150ms;
   width: 64px;
   z-index: inherit;
 }

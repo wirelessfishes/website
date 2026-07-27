@@ -33,7 +33,7 @@ function scrobbleCard(track: Scrobble, dynamic_bg?: boolean): string {
   }
 
   return `
-  <div class="scrobble-track${dynamic_bg ? " scrobble-track_dynamic" : ""}">
+  <a href="${track.url}" target="_blank" class="scrobble-track${dynamic_bg ? " scrobble-track_dynamic" : ""}">
     <img src="${getScrobbleCover(track, "large")}" loading="lazy" class="scrobble-track_img" />
 
     <div class="scrobble-track_info">
@@ -42,7 +42,7 @@ function scrobbleCard(track: Scrobble, dynamic_bg?: boolean): string {
     </div>
 
     ${dynamic_bg_str}
-  </div>
+  </a>
   `;
 }
 
