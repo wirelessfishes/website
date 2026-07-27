@@ -79,9 +79,9 @@
 
 .scrobble-track_img {
   aspect-ratio: 1;
+  height: 64px;
   object-fit: cover;
   transition: 150ms;
-  width: 64px;
   z-index: inherit;
 }
 
