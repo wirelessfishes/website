@@ -1,0 +1,52 @@
+---
+layout: layouts/layout.njk
+title: WIRELESS.FISH guestbook
+description: Sharky waz here 2026
+
+extra_css:
+  - /css/page/guestbook.css
+---
+
+<script src="/scripts/guestbook.js" defer></script>
+
+<section>
+  <h2>Guestbook</h2>
+  <p>Let me know you were here! An actual living creature!</p>
+
+  <form id="guestbook-form">
+    <div class="guestbook-form_head">
+      <div>
+        <label for="guestbook-form_name">Name</label><br />
+        <input id="guestbook-form_name" name="name" placeholder="Jane Doe" type="text" required />
+      </div>
+
+      <div>
+        <label for="guestbook-form_url">Your website (optional)</label><br />
+        <input id="guestbook-form_url" name="your website" placeholder="https://example.com" type="url" />
+      </div>
+    </div>
+
+    <div>
+      <label for="guestbook-form_message">Message</label><br />
+      <textarea
+        id="guestbook-form_message"
+        name="message"
+        placeholder="Rat activiy has increased exponentially"
+        type="text"
+        required
+      ></textarea>
+    </div>
+
+    <button class="button" type="submit"><span>Submit</span></button>
+  </form>
+</section>
+
+<section>
+  <h3>Entries</h3>
+
+  <div id="guestbook-content"></div>
+  <details>
+    <summary>Guestbook archive (prior to 2026/07/27 / wireless.fish redesign)</summary>
+    <div id="guestbook-content-archive"></div>
+  </details>
+</section>

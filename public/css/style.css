@@ -9,6 +9,7 @@
   --white: #f5f5f5;
   --black: #16171b;
   --grey: #353841;
+  --lightgrey: #7d808a;
   --darkgrey: #202227;
   --red: #ff1e1e;
   --error-red: #ec5757;
@@ -83,7 +84,9 @@ p + p {
   margin-top: 0.25em;
 }
 
-textarea {
+textarea,
+input[type="text"],
+input[type="url"] {
   background-color: #263a66;
   border: 2px solid var(--blue);
   color: var(--white);
@@ -93,7 +96,9 @@ textarea {
   resize: vertical;
 }
 
-textarea:focus {
+textarea:focus,
+input[type="text"]:focus,
+input[type="url"]:focus {
   background-color: #2f487e;
   border-color: var(--white);
   outline: none;
