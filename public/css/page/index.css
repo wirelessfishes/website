@@ -52,6 +52,14 @@
   font-weight: normal;
 }
 
+.thing-i-did_description {
+  padding: 4px 8px;
+}
+.thing-i-did_content {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
 #notifysend {
   flex: 1;
   margin: 0px 14px;
