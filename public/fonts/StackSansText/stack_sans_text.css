@@ -3,7 +3,7 @@
   font-family: "Stack Sans Text";
   font-style: normal;
   font-weight: normal;
-  src: url("StackSansText-Regular.ttf");
+  src: url("StackSansText-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-family: "Stack Sans Text";
   font-style: normal;
   font-weight: bold;
-  src: url("StackSansText-Bold.ttf");
+  src: url("StackSansText-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-family: "Stack Sans Text";
   font-style: normal;
   font-weight: 300; /* light */
-  src: url("StackSansText-Light.ttf");
+  src: url("StackSansText-Light.ttf") format("truetype");
 }
 
 @font-face {
@@ -27,5 +27,5 @@
   font-family: "Stack Sans Text";
   font-style: normal;
   font-weight: 100; /* extra light */
-  src: url("StackSansText-ExtraLight.ttf");
+  src: url("StackSansText-ExtraLight.ttf") format("truetype");
 }
