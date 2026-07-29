@@ -13,21 +13,28 @@ extra_css:
   <h2>Guestbook</h2>
   <p>Let me know you were here! An actual living creature!</p>
 
+  <div class="guestbook-reply-status" id="reply-to-container">
+    <button class="button-cancel" id="cancel-reply-button" style="float: right">Cancel</button>
+    <span id="reply-to-status">&gt;&gt;&gt; Replying to NAME</span>
+  </div>
+
   <form id="guestbook-form">
     <div class="guestbook-form_head">
       <div>
-        <label for="guestbook-form_name">Name</label><br />
+        <label for="guestbook-form_name">Name <span class="color-darkred">*</span></label
+        ><br />
         <input id="guestbook-form_name" name="name" placeholder="Jane Doe" type="text" required />
       </div>
 
       <div>
-        <label for="guestbook-form_url">Your website (optional)</label><br />
+        <label for="guestbook-form_url">Your website</label><br />
         <input id="guestbook-form_url" name="your website" placeholder="https://example.com" type="url" />
       </div>
     </div>
 
     <div>
-      <label for="guestbook-form_message">Message</label><br />
+      <label for="guestbook-form_message">Message <span class="color-darkred">*</span></label
+      ><br />
       <textarea
         id="guestbook-form_message"
         name="message"
@@ -37,6 +44,8 @@ extra_css:
       ></textarea>
     </div>
 
+    <div id="guestbook-form_status"></div>
+
     <button class="button" type="submit"><span>Submit</span></button>
   </form>
 </section>
@@ -45,8 +54,9 @@ extra_css:
   <h3>Entries</h3>
 
   <div id="guestbook-content"></div>
+
   <details>
-    <summary>Guestbook archive (prior to 2026/07/27 / wireless.fish redesign)</summary>
+    <summary>Guestbook archive <span class="less-important">(prior to 2026/07/27)</span></summary>
     <div id="guestbook-content-archive"></div>
   </details>
 </section>

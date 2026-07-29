@@ -2,7 +2,8 @@ export interface GuestbookEntry {
   id: number;
   name: string;
   content: string;
-  reply_to: number | null;
+  replies: GuestbookEntry[];
+  reply_count: number;
   site: string | null;
   created: string;
 }

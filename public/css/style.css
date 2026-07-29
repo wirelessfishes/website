@@ -12,6 +12,8 @@
   --lightgrey: #7d808a;
   --darkgrey: #202227;
   --red: #ff1e1e;
+  --peach: #fac8c8;
+  --darkred: #aa1e1e;
   --error-red: #ec5757;
   --orange: #ffb41f;
   --warning-orange: #eebe5e;
@@ -85,10 +87,9 @@ p + p {
 }
 
 textarea,
-input[type="text"],
-input[type="url"] {
+input {
   background-color: #263a66;
-  border: 2px solid var(--blue);
+  border: 2px solid transparent;
   color: var(--white);
   font-family: "Stack Sans Text";
 
@@ -97,15 +98,20 @@ input[type="url"] {
 }
 
 textarea:focus,
-input[type="text"]:focus,
-input[type="url"]:focus {
+input:focus {
   background-color: #2f487e;
-  border-color: var(--white);
+  border: 2px solid var(--blue);
   outline: none;
 }
 
 section + section {
   margin-top: 16px;
+}
+
+details {
+  summary {
+    cursor: pointer;
+  }
 }
 
 /* === INTERFACE === */
@@ -171,6 +177,18 @@ button {
   cursor: pointer;
 }
 
+.button-cancel {
+  background: linear-gradient(var(--red), var(--darkred));
+  border: none;
+  color: var(--peach);
+}
+
+.button-cancel:hover {
+  background: var(--peach);
+  color: var(--red);
+  cursor: pointer;
+}
+
 /* === LAYOUT === */
 
 .content {
@@ -211,4 +229,17 @@ button {
 
 .orange-text {
   color: var(--orange) !important;
+}
+
+.color-darkred {
+  color: var(--darkred);
+}
+
+.input-invalid {
+  border-color: var(--error-red);
+}
+
+.less-important {
+  font-style: italic;
+  opacity: 0.6;
 }

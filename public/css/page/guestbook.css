@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+#reply-to-container {
+  display: none;
+}
+
 .guestbook-form_head {
   display: grid;
   gap: 8px;
@@ -30,20 +34,20 @@
 #guestbook-content-archive {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 4px;
 }
 
 .guestbook-entry {
   background-color: var(--darkgrey);
-  border-radius: 6px;
+  border: 1px solid var(--black);
+  /* border-radius: 6px; */
   overflow: hidden;
 }
 
 .guestbook-entry_top {
-  background-color: var(--grey);
   display: flex;
   justify-content: space-between;
-  padding: 4px 8px;
+  padding: 2px 8px;
 }
 
 .guestbook-entry_bottom {
@@ -53,12 +57,16 @@
 }
 
 .guestbook-entry_content {
-  padding: 4px 8px;
+  padding: 2px 8px;
 }
 
 .guestbook-entry_options {
   display: flex;
   gap: 8px;
+}
+
+.guestbook-entry_name {
+  font-weight: bold;
 }
 
 .guestbook-entry_date {
@@ -91,4 +99,31 @@
   margin-left: 0.4em;
   vertical-align: middle;
   width: 1em;
+}
+
+.guestbook-entry_replies {
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0px;
+  width: 100%;
+
+  .guestbook-entry {
+    background-color: var(--grey);
+    width: 95%;
+  }
+}
+
+.guestbook-form_status {
+  text-align: center;
+}
+
+.guestbook-reply-status {
+  background-color: var(--darkgrey);
+  padding-left: 8px;
+
+  span {
+    font-size: large;
+  }
 }
