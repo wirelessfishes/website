@@ -126,6 +126,10 @@ async function onSubmit(e: SubmitEvent) {
     status_el.innerHTML = "Successfuly posted!";
     render();
     setReplyToId(undefined);
+
+    name_el.value = "";
+    url_el.value = "";
+    content_el.value = "";
   } else {
     status_el.classList.add("error-text");
     status_el.innerHTML = `Error while posting (${resp.status}). Please poke me on discord/email.`;
