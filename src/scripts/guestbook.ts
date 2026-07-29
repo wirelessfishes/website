@@ -74,8 +74,8 @@ async function render(comments?: GuestbookResponse) {
 }
 
 function setReplyToId(id?: number) {
-  const reply_to_container_el = getEl("reply-to-container");
-  const reply_to_status_el = getEl("reply-to-status");
+  const reply_to_container_el = getEl("guestbook-reply");
+  const reply_to_status_el = getEl("guestbook-reply_name");
   reply_to_id = id;
 
   if (!id) {
@@ -148,7 +148,7 @@ async function connectInputEvents() {
 connectInputEvents();
 render();
 
-const cancel_reply_btn = getEl<HTMLButtonElement>("cancel-reply-button");
+const cancel_reply_btn = getEl<HTMLButtonElement>("guestbook-reply_cancel");
 cancel_reply_btn.addEventListener("click", (e) => {
   setReplyToId(undefined);
 });
