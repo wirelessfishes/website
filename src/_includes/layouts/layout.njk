@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en-US">
   <head>
     <!-- META -->
     <meta charset="UTF-8" />
-    <meta lang="en-US" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="{{eleventy.generator}}" />
+    <link rel="canonical" href="https://wireless.fish{{ page.url }}" />
+
+    <link href="https://bsky.app/profile/wireless.fish" rel="me">
 
     <!-- SOME STUFF -->
     <title>{{ title }}</title>
@@ -19,8 +21,23 @@
     <meta property="og:url" content="https://wireless.fish{{ page.url }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ title }}" />
-    {% if description %}<meta property="og:description" content="{{ description }}" />{% endif %}
-    {% if og_img %}<meta property="og:image" content="{{ og_img }}" />{% endif %}
+    <meta property="og:locale" content="en_US" />
+    
+    {% if description %}
+      <meta property="og:description" content="{{ description }}" />
+    {% endif %}
+
+    {% if og_img %}
+      <meta property="og:image" content="{{ og_img }}" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    {% endif %}
+
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ title }}" />
+    {% if description %}<meta name="twitter:description" content="{{ description }}" />{% endif %}
+    {% if og_img %}<meta name="twitter:image" content="{{ og_img }}" />{% endif %}
 
     {# base styles #}
     <link rel="stylesheet" href="/css/style.css" />
