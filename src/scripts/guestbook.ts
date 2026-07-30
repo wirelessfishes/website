@@ -27,7 +27,7 @@ function Comment(comment: GuestbookEntry, render_replies: boolean, can_be_replie
   return `
     <div class="guestbook-entry">
         <div class="guestbook-entry_top">
-            <div class="guestbook-entry_name">${comment.name}</div>
+            <div class="guestbook-entry_name">${comment.name} ${comment.verified ? `<img src="/assets/shield.svg" title="Webmaster">` : ""}</div>
             
             <div class="guestbook-entry_options">
             ${comment.site ? `<a href="${comment.site}">${new URL(comment.site).host} 🡕</a>` : ""}

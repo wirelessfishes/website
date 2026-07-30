@@ -5,6 +5,7 @@ export interface GuestbookEntry {
   replies: GuestbookEntry[];
   reply_count: number;
   site: string | null;
+  verified: 0 | 1;
   created: string;
 }
 

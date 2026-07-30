@@ -66,7 +66,15 @@
 }
 
 .guestbook-entry_name {
+  align-items: center;
+  display: flex;
   font-weight: bold;
+
+  img {
+    display: inline-block;
+    height: 1em;
+    margin-left: 6px;
+  }
 }
 
 .guestbook-entry_date {
