@@ -52,12 +52,12 @@ function Comment(comment: GuestbookEntry, render_replies: boolean, can_be_replie
 async function render(comments?: GuestbookResponse) {
   const comment_container = getEl("guestbook-content");
   const comment_archive = getEl("guestbook-content-archive");
-  comment_container.innerHTML = "";
-  comment_archive.innerHTML = "";
 
   if (!comments) {
     try {
       comments = await getGuestbook();
+      comment_container.innerHTML = "";
+      comment_archive.innerHTML = "";
     } catch (e) {
       comment_container.innerHTML = `<span class="error-text">ERROR: Could not get guestbook comments.</span>`;
       return;
