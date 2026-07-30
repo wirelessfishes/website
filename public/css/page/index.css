@@ -73,3 +73,10 @@
 #notifyinput {
   flex: 10;
 }
+
+.mybtn {
+  background-color: var(--grey);
+  border-radius: 2px;
+  float: right;
+  padding: 0px 4px 4px;
+}
