@@ -199,7 +199,7 @@ button {
 }
 
 .nav-spacer {
-  background-color: var(--white);
+  background-color: var(--blue);
   transform: skew(-45deg);
   width: 4px;
 }
