@@ -154,10 +154,7 @@ async function renderUserInfo() {
 }
 
 async function render() {
-  renderRecent();
-  renderTopTracks();
-  renderTopArtists();
-  renderUserInfo();
+  await Promise.all([renderRecent(), renderTopTracks(), renderTopArtists(), renderUserInfo()]);
 }
 
 render().catch((error) => {
@@ -173,6 +170,10 @@ render().catch((error) => {
   if (user_info_container) {
     user_info_container.innerHTML = "Failed to load user info.";
   }
+
+  const scrobbles_section = getEl("scrobbles-section");
+  scrobbles_section.innerHTML = `<span class="error-text">Failed to load scrobbles. Something went wrong or my backend is down :(</span>`;
+  scrobbles_section.style.display = "block";
 });
 
 updateActivityLoop(15 * 1000); // 15 seconds

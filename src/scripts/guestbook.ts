@@ -60,7 +60,7 @@ async function render(comments?: GuestbookResponse) {
       comment_archive.innerHTML = "";
     } catch (e) {
       comment_container.innerHTML = `<span class="error-text">ERROR: Could not get guestbook comments.</span>`;
-      return;
+      throw e;
     }
   }
 
@@ -150,7 +150,13 @@ async function connectInputEvents() {
 }
 
 connectInputEvents();
-render();
+render().catch((e) => {
+  const form = getEl("guestbook-form");
+  form.innerHTML = "";
+
+  const comments = getEl("entries-section");
+  comments.innerHTML = `<span class="error-text">Failed to load guestbook. Something went terribly wrong or my backend is down :(</span>`;
+});
 
 const cancel_reply_btn = getEl<HTMLButtonElement>("guestbook-reply_cancel");
 cancel_reply_btn.addEventListener("click", (e) => {
