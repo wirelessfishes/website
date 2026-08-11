@@ -1,5 +1,6 @@
 @import url("/css/reset.css");
 @import url("/fonts/HS_LunaObscura/luna.css");
+@import url("/fonts/Inter/inter.css");
 @import url("/fonts/StackSansText/stack_sans_text.css");
 @import url("/fonts/AkmornGrotesque/akmorn_grotesque.css");
 
@@ -28,15 +29,17 @@ html {
   background-image: url("/assets/wireless_fish_bg.jpg");
   background-size: cover;
   color: var(--white);
-  font-family: "Akmorn Grotesque", sans-serif;
+  font-family: "Stack Sans Text", "Akmorn Grotesque", sans-serif;
+  font-weight: 300;
   font-size: 16px;
-  word-spacing: -2px;
+  /* word-spacing: -2px; */
 }
 
 body {
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding-bottom: 16px;
 }
 
 body > section + section {
@@ -57,7 +60,8 @@ h2 {
   font-feature-settings: "ss01" 1;
   font-size: 26px;
   font-weight: bold;
-  margin-block: 0.5em;
+  text-align: center;
+  margin-bottom: 8px;
 }
 
 h3 {
@@ -192,9 +196,7 @@ button {
 /* === LAYOUT === */
 
 .content {
-  background-color: var(--black);
-  max-width: 1000px;
-  padding: 16px 32px;
+  max-width: 900px;
   width: 100%;
 }
 
@@ -207,10 +209,28 @@ button {
 /* === STYLE === */
 
 .site-header {
-  background-color: var(--black);
-  border-bottom: 4px solid var(--blue);
-  padding: 16px;
+  margin-bottom: 16px;
+  padding: 16px 32px !important;
   width: 100dvw;
+  background-color: var(--black);
+  border-bottom: 2px solid var(--blue);
+}
+
+.box-thing {
+  background-color: var(--black);
+
+  border: 1px solid var(--blue);
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.box-thing + .box-thing {
+  margin-top: 16px;
 }
 
 .site-title {

@@ -65,6 +65,10 @@
   a {
     padding: 0px;
   }
+
+  a:hover {
+    background-color: transparent;
+  }
 }
 
 #notifysend {
@@ -81,4 +85,41 @@
   border-radius: 2px;
   float: right;
   padding: 0px 4px 4px;
+}
+
+.webrings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.contact-div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+#contact-fluxer::before,
+#contact-discord::before,
+#contact-email::before {
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 0.5em;
+  display: inline-block;
+}
+
+#contact-fluxer::before {
+  content: url("/assets/icons/fluxer_light.svg");
+}
+
+#contact-discord::before {
+  content: url("/assets/icons/discord_light.svg");
+}
+#contact-email::before {
+  content: url("/assets/icons/email_light.svg");
 }

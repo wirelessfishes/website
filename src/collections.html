@@ -7,48 +7,50 @@ extra_css:
   - /css/page/collections.css
 ---
 
-<h2>Stamps</h2>
+<section class="box-thing">
+  <h2>Stamps</h2>
 
-<div class="stamps">
-  {% for entry in stamps %}
-  <img src="/assets/stamps/{{entry}}" />
-  {% endfor %}
-</div>
+  <div class="stamps">
+    {% for entry in stamps %}
+    <img src="/assets/stamps/{{entry}}" />
+    {% endfor %}
+  </div>
+</section>
 
-<div class="horizontal-divider"></div>
+<section class="box-thing">
+  <h2>Blinkies</h2>
 
-<h2>Blinkies</h2>
+  <div class="blinkies">
+    {% for entry in blinkies %}
+    <img src="/assets/blinkies/{{entry}}" />
+    {% endfor %}
+  </div>
+</section>
 
-<div class="blinkies">
-  {% for entry in blinkies %}
-  <img src="/assets/blinkies/{{entry}}" />
-  {% endfor %}
-</div>
+<section class="box-thing">
+  <h2>Other collectibles</h2>
 
-<div class="horizontal-divider"></div>
+  <div class="collectibles">
+    <a href="http://www.nerdtests.com/ft_nt2.php">
+      <img style="margin-top: 8px" loading="lazy" src="/assets/misc/nerd.png" alt="nerd test results" />
+    </a>
 
-<h2>Other collectibles</h2>
+    <a href="https://www.nerdtests.com/ft_loser.php"><img src="/assets/misc/lsr.gif" /></a>
 
-<div class="collectibles">
-  <a href="http://www.nerdtests.com/ft_nt2.php">
-    <img style="margin-top: 8px" loading="lazy" src="/assets/misc/nerd.png" alt="nerd test results" />
-  </a>
+    <a href="https://swiftyshq.neocities.org/fun/quiz/eon"
+      ><img
+        src="/assets/misc/vee.jpg"
+        alt="vaporeon"
+        title="bold and introverted, you don't make a fuss, but don't let others boss you around"
+    /></a>
 
-  <a href="https://www.nerdtests.com/ft_loser.php"><img src="/assets/misc/lsr.gif" /></a>
+    <a href="https://swiftyshq.neocities.org/fun/quiz/creature"
+      ><img
+        src="/assets/misc/wet_beast.png"
+        alt="wet beast"
+        title="sloppy and wet in the river rocks...... you are laid back as fuck. maybe too laid back. get mad!!"
+    /></a>
 
-  <a href="https://swiftyshq.neocities.org/fun/quiz/eon"
-    ><img
-      src="/assets/misc/vee.jpg"
-      alt="vaporeon"
-      title="bold and introverted, you don't make a fuss, but don't let others boss you around"
-  /></a>
-
-  <a href="https://swiftyshq.neocities.org/fun/quiz/creature"
-    ><img
-      src="/assets/misc/wet_beast.png"
-      alt="wet beast"
-      title="sloppy and wet in the river rocks...... you are laid back as fuck. maybe too laid back. get mad!!"
-  /></a>
-
-  <img src="/assets/misc/borntoshare.jpg" width="400px" />
-</div>
+    <img src="/assets/misc/borntoshare.jpg" width="400px" />
+  </div>
+</section>
