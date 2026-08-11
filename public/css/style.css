@@ -30,8 +30,8 @@ html {
   background-size: cover;
   color: var(--white);
   font-family: "Stack Sans Text", "Akmorn Grotesque", sans-serif;
-  font-weight: 300;
   font-size: 16px;
+  font-weight: 300;
   /* word-spacing: -2px; */
 }
 
@@ -60,8 +60,8 @@ h2 {
   font-feature-settings: "ss01" 1;
   font-size: 26px;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 h3 {
@@ -209,11 +209,11 @@ button {
 /* === STYLE === */
 
 .site-header {
+  background-color: var(--black);
+  border-bottom: 2px solid var(--blue);
   margin-bottom: 16px;
   padding: 16px 32px !important;
   width: 100dvw;
-  background-color: var(--black);
-  border-bottom: 2px solid var(--blue);
 }
 
 .box-thing {

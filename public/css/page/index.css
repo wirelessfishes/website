@@ -99,18 +99,18 @@
   justify-items: center;
 
   div {
-    display: flex;
     align-items: center;
+    display: flex;
   }
 }
 
 #contact-fluxer::before,
 #contact-discord::before,
 #contact-email::before {
-  height: 1.5em;
-  width: 1.5em;
-  margin-right: 0.5em;
   display: inline-block;
+  height: 1.5em;
+  margin-right: 0.5em;
+  width: 1.5em;
 }
 
 #contact-fluxer::before {
