@@ -34,8 +34,7 @@
 }
 
 .thing-i-did {
-  border: 2px solid var(--grey);
-  border-radius: 4px;
+  border: 1px solid var(--blue);
   overflow: hidden;
   width: fit-content;
 }

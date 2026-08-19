@@ -30,16 +30,14 @@ html {
   background-size: cover;
   color: var(--white);
   font-family: "Stack Sans Text", "Akmorn Grotesque", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
-  /* word-spacing: -2px; */
 }
 
 body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding-bottom: 16px;
 }
 
 body > section + section {
@@ -61,7 +59,6 @@ h2 {
   font-size: 26px;
   font-weight: bold;
   margin-bottom: 8px;
-  text-align: center;
 }
 
 h3 {
@@ -88,6 +85,10 @@ p {
 
 p + p {
   margin-top: 0.25em;
+}
+
+b {
+  font-weight: bold;
 }
 
 textarea,
@@ -118,6 +119,12 @@ details {
   }
 }
 
+header {
+  border-bottom: 2px solid var(--blue);
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+}
+
 /* === INTERFACE === */
 
 button {
@@ -134,7 +141,7 @@ button {
 
 .link-alt:hover {
   background-color: var(--orange);
-  color: var(--blue) !important;
+  color: var(--black) !important;
 }
 
 .button,
@@ -196,7 +203,9 @@ button {
 /* === LAYOUT === */
 
 .content {
-  max-width: 900px;
+  background-color: var(--black);
+  max-width: 1000px;
+  padding: 16px 32px;
   width: 100%;
 }
 
@@ -234,9 +243,9 @@ button {
 }
 
 .site-title {
-  font-style: italic;
-  margin: 6px;
-  text-align: center;
+  a {
+    text-decoration: none;
+  }
 }
 
 .error-text {
