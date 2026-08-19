@@ -58,7 +58,7 @@
   padding: 4px 8px;
 }
 .thing-i-did_content {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 3fr 1fr;
 
   a {
