@@ -1,0 +1,30 @@
+---
+import AeroButtonLink from "./AeroButtonLink.astro";
+---
+
+<style>
+  nav {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 0px 4px;
+
+    padding: 4px;
+  }
+
+  .navbar-strip {
+    background: linear-gradient(to bottom, var(--grey), var(--darkgrey));
+    border-top: 1px solid rgb(71, 71, 71);
+    border-bottom: 1px solid rgb(71, 71, 71);
+  }
+</style>
+
+<div class="navbar-strip">
+  <nav>
+    <AeroButtonLink href="/" color="#1e78ff">Home</AeroButtonLink>
+    <AeroButtonLink href="/collections/" color="#1e78ff">Collections</AeroButtonLink>
+    <AeroButtonLink href="/scrobbles/" color="#1e78ff">Scrobbles</AeroButtonLink>
+    <AeroButtonLink href="/guestbook/" color="#1e78ff">Guestbook</AeroButtonLink>
+    <AeroButtonLink href="https://github.com/wirelessfishes" color="#f6af43">Git 🡕</AeroButtonLink>
+  </nav>
+</div>

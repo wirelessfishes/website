@@ -1,4 +1,4 @@
-@import url("/css/reset.css");
+@import url("./reset.css");
 @import url("/fonts/HS_LunaObscura/luna.css");
 @import url("/fonts/Inter/inter.css");
 @import url("/fonts/StackSansText/stack_sans_text.css");
@@ -26,8 +26,7 @@
 html {
   background-attachment: fixed;
   background-color: var(--bg);
-  background-image: url("/assets/wireless_fish_bg.jpg");
-  background-size: cover;
+  background-image: url("/bg.gif");
   color: var(--white);
   font-family: "Stack Sans Text", "Akmorn Grotesque", sans-serif;
   font-size: 14px;
@@ -119,12 +118,6 @@ details {
   }
 }
 
-header {
-  border-bottom: 2px solid var(--blue);
-  margin-bottom: 8px;
-  padding-bottom: 8px;
-}
-
 /* === INTERFACE === */
 
 button {
@@ -205,25 +198,10 @@ button {
 .content {
   background-color: var(--black);
   max-width: 1000px;
-  padding: 16px 32px;
   width: 100%;
 }
 
-.nav-spacer {
-  background-color: var(--blue);
-  transform: skew(-45deg);
-  width: 4px;
-}
-
 /* === STYLE === */
-
-.site-header {
-  background-color: var(--black);
-  border-bottom: 2px solid var(--blue);
-  margin-bottom: 16px;
-  padding: 16px 32px !important;
-  width: 100dvw;
-}
 
 .box-thing {
   background-color: var(--black);

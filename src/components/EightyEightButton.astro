@@ -1,0 +1,15 @@
+---
+const { src, alt, href, css_classes = "" } = Astro.props;
+---
+
+<style>
+  a,
+  img {
+    height: 31px;
+    width: 88px;
+  }
+</style>
+
+<a target="_blank" href={href} class={css_classes}>
+  <img loading="lazy" src={src} alt={alt} />
+</a>

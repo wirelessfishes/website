@@ -82,6 +82,8 @@
 .mybtn {
   background-color: var(--grey);
   border-radius: 2px;
+  display: flex;
+  flex-direction: column;
   float: right;
   padding: 0px 4px 4px;
 }

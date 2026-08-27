@@ -1,0 +1,116 @@
+---
+    const {title, description, og_img} = Astro.props;
+
+    import "../styles/style.css"
+    import "../styles/page/index.css"
+import Navbar from "../components/Navbar.astro";
+---
+
+<style>
+  header {
+    margin-bottom: 8px;
+  }
+
+  footer {
+    margin-bottom: 16px;
+  }
+
+  .header-title {
+    height: 170px;
+    background-image: url("/header.jpg");
+
+    display: flex;
+    justify-content: end;
+    align-items: end;
+
+    h1, a {
+      margin: 0;
+      padding: 0;
+
+      text-decoration: none !important;
+    }
+
+    h1 {
+      padding: 4px 16px;
+      width: 600px;
+      text-align: right;
+      background: linear-gradient(to left, var(--darkgrey) 81%, transparent);
+
+      border-image: linear-gradient(to left, var(--red));
+    }
+  }
+</style>
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={`https://wireless.fish${Astro.url}`}  />
+
+    <link href="https://bsky.app/profile/wireless.fish" rel="me">
+
+    <!-- SOME STUFF -->
+    <title>{ title }</title>
+    <meta name="description" content={ description } />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="/assets/favicon.png">
+
+    <!-- https://ogp.me stuff -->
+    <meta property="og:url" content={`https://wireless.fish${Astro.url}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={ title } />
+    <meta property="og:locale" content="en_US" />
+    
+    {description ? (
+      <meta property="og:description" content={ description } />
+    ) : ""}
+
+    { og_img ? (
+      <meta property="og:image" content={ og_img } />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    ) : "" }
+
+    <!-- twitter card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ title } />
+    
+    { description ? (
+      <meta name="twitter:description" content={ description } />
+    ) : ""}
+
+    { og_img ? (
+      <meta name="twitter:image" content={ og_img } />
+    ) : ""}
+  </head>
+
+  <body>    
+    <div class="content">
+      <header>
+        <div class="header-title">
+          <h1><a href="/">wireless.fish</a></h1>
+        </div>
+        
+        <Navbar/>
+      </header>
+
+      <div style="padding: 8px 16px;">
+        <slot />
+      </div>
+
+      <footer style="text-align: center; display: flex; flex-direction: column; gap: 1px; margin-top: 0.5em;">
+        <div>
+          ♡ Copying is an act of theft, while taking inspiration is the true act of love.
+          <a class="link-button link-alt" href="https://maxpixels.moe/manifesto/">🡕</a>
+        </div>
+
+        <div>© Sharky 2025-2026 <a class="link-button link-alt" href="/LICENSE.txt">→</a></div>
+      </footer>
+    </div>
+  </body>
+</html>
