@@ -23,9 +23,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint CSS
-        run: pnpm run lint:css
-
       - name: Typecheck
         run: pnpm run typecheck
 

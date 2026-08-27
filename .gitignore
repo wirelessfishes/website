@@ -1,7 +1,7 @@
 export
 node_modules
 dist
-public/scripts
+.astro
 
 .DS_Store
 .vscode
