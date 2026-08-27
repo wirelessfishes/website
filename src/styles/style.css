@@ -12,6 +12,7 @@
   --grey: #353841;
   --lightgrey: #7d808a;
   --darkgrey: #202227;
+  --darkergrey: #1a1b20;
   --red: #ff1e1e;
   --peach: #fac8c8;
   --darkred: #aa1e1e;
@@ -218,6 +219,15 @@ button {
 
 .box-thing + .box-thing {
   margin-top: 16px;
+}
+
+.content-padding {
+  padding: 8px 16px;
+}
+
+.content-padding + .content-padding {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .site-title {

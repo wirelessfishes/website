@@ -1,0 +1,36 @@
+---
+const { title, description, date, image } = Astro.props;
+---
+
+<style>
+  .thingimade {
+    display: flex;
+
+    background: linear-gradient(to bottom, var(--darkgrey), var(--darkergrey));
+
+    border-top: 1px solid #474747;
+    border-bottom: 1px solid #474747;
+  }
+
+  img {
+    width: 300px;
+    height: 200px;
+  }
+
+  h3 > span {
+    font-weight: normal;
+  }
+
+  .thingimade_content {
+    padding: 8px 16px;
+  }
+</style>
+
+<div class="thingimade">
+  <img loading="lazy" src={image} />
+
+  <div class="thingimade_content">
+    <h3>{title} <span>({date})</span></h3>
+    <slot />
+  </div>
+</div>
