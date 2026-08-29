@@ -1,0 +1,57 @@
+---
+import fs from "node:fs";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const stamps = fs.readdirSync("public/assets/stamps");
+const blinkies = fs.readdirSync("public/assets/blinkies");
+
+import "../styles/page/collections.css";
+---
+
+<BaseLayout title="WIRELESS.FISH collections" description="I collect images.">
+  <section>
+    <h2>Stamps</h2>
+
+    <div class="stamps">
+      {stamps.map((stamp) => <img loading="lazy" src={"/assets/stamps/" + stamp} />)}
+    </div>
+  </section>
+
+  <section>
+    <h2>Blinkies</h2>
+
+    <div class="blinkies">
+      {blinkies.map((blinkie) => <img loading="lazy" src={"/assets/blinkies/" + blinkie} />)}
+    </div>
+  </section>
+
+  <section>
+    <h2>Other collectibles</h2>
+
+    <div class="collectibles">
+      <a href="http://www.nerdtests.com/ft_nt2.php">
+        <img style="margin-top: 8px" loading="lazy" src="/assets/misc/nerd.png" alt="nerd test results" />
+      </a>
+
+      <a href="https://www.nerdtests.com/ft_loser.php"><img src="/assets/misc/lsr.gif" /></a>
+
+      <a href="https://swiftyshq.neocities.org/fun/quiz/eon"
+        ><img
+          src="/assets/misc/vee.jpg"
+          alt="vaporeon"
+          title="bold and introverted, you don't make a fuss, but don't let others boss you around"
+        /></a
+      >
+
+      <a href="https://swiftyshq.neocities.org/fun/quiz/creature"
+        ><img
+          src="/assets/misc/wet_beast.png"
+          alt="wet beast"
+          title="sloppy and wet in the river rocks...... you are laid back as fuck. maybe too laid back. get mad!!"
+        /></a
+      >
+
+      <img src="/assets/misc/borntoshare.jpg" width="400px" />
+    </div>
+  </section>
+</BaseLayout>
