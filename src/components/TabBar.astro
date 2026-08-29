@@ -1,0 +1,32 @@
+<style>
+  .tabs {
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: 2px;
+  }
+
+  .bottom-line {
+    height: 1px;
+    background-color: #474747;
+    z-index: 1;
+
+    position: relative;
+    top: -1px;
+  }
+
+  .color-strip {
+    padding: 0px 4px;
+    padding-top: 4px;
+
+    background: linear-gradient(to bottom, var(--grey), var(--black) 90%);
+  }
+</style>
+
+<div class="color-strip">
+  <div class="tabs">
+    <slot />
+  </div>
+</div>
+
+<div class="bottom-line"></div>

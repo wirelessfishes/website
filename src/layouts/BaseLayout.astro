@@ -4,11 +4,13 @@
     import "../styles/style.css"
     import "../styles/page/index.css"
 import Navbar from "../components/Navbar.astro";
+import TabBar from "../components/TabBar.astro";
+import TabElement from "../components/TabElement.astro";
 ---
 
 <style>
   header {
-    /* margin-bottom: 8px; */
+    
   }
 
   footer {
@@ -20,7 +22,7 @@ import Navbar from "../components/Navbar.astro";
     background-image: url("/header.jpg");
 
     display: flex;
-    justify-content: end;
+    justify-content: start;
     align-items: end;
 
     h1, a {
@@ -33,8 +35,9 @@ import Navbar from "../components/Navbar.astro";
     h1 {
       padding: 4px 16px;
       width: 600px;
-      text-align: right;
-      background: linear-gradient(to left, var(--darkgrey) 81%, transparent);
+      height: fit-content;
+      text-align: left;
+      background: linear-gradient(to right, var(--black) 81%, transparent);
 
       border-image: linear-gradient(to left, var(--red));
     }
@@ -92,14 +95,19 @@ import Navbar from "../components/Navbar.astro";
   <body>    
     <div class="content">
       <header>
-        <div class="header-title">
-          <h1><a href="/">wireless.fish</a></h1>
-        </div>
+          <div class="header-title">
+            <h1><a href="/">wireless.fish</a></h1>
+          </div>
         
-        <Navbar/>
+          <TabBar>
+            <TabElement href="/">Home</TabElement>
+            <TabElement href="/collections/">Collections</TabElement>
+            <TabElement href="/whatever/">Scrobbles</TabElement>
+            <TabElement href="/whatever/">Guestbook</TabElement>
+          </TabBar>
       </header>
 
-        <slot />
+      <slot />
 
       <footer style="text-align: center; display: flex; flex-direction: column; gap: 1px; margin-top: 0.5em;">
         <div>
