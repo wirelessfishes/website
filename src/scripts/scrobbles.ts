@@ -11,8 +11,6 @@ import {
   trackTimeAgo,
   getTopTracks,
   getTopArtists,
-  getTrackCover,
-  getArtistImage,
 } from "./module/lastfm.js";
 import type { Artist, Track } from "./types/lastfm.js";
 

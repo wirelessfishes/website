@@ -136,12 +136,12 @@ async function api_getTopAlbums(username: string, limit?: number, period?: LastF
 export async function getRecentTracks(limit?: number): Promise<RecentTracks> {
   const cacheKey = limit ? `lastfm-recent-${limit}` : "lastfm-recent";
 
-  const cached = getLocalStorage(cacheKey);
-  if (cached) return JSON.parse(cached);
+  // const cached = getLocalStorage(cacheKey);
+  // if (cached) return JSON.parse(cached);
 
   const data = await api_getRecentTracks(USERNAME, limit);
   // 15 second cache bc it refreshes often
-  setLocalStorageSeconds(cacheKey, JSON.stringify(data), 15);
+  // setLocalStorageSeconds(cacheKey, JSON.stringify(data), 15);
   return data;
 }
 

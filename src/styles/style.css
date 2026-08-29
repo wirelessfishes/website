@@ -6,12 +6,14 @@
 
 :root {
   --blue: #1e78ff;
+  --lightblue: #7aa9f0;
   --darkblue: #143272;
   --blue-disabled: #1e314d;
   --white: #f5f5f5;
   --black: #16171b;
   --grey: #353841;
   --lightgrey: #7d808a;
+  --lightergrey: #b5b7be;
   --darkgrey: #25282e;
   --darkergrey: #1a1b20;
   --magenta: #9d41da;
@@ -95,9 +97,9 @@ b {
 
 textarea,
 input {
-  background-color: #263a66;
-  border: 2px solid transparent;
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--black);
+  border: 2px inset var(--white);
   font-family: "Stack Sans Text";
 
   padding: 2px 4px;
@@ -106,8 +108,7 @@ input {
 
 textarea:focus,
 input:focus {
-  background-color: #2f487e;
-  border: 2px solid var(--blue);
+  border-color: var(--lightblue);
   outline: none;
 }
 
@@ -122,10 +123,6 @@ details {
 }
 
 /* === INTERFACE === */
-
-button {
-  font-family: "Stack Sans Text";
-}
 
 .link-button {
   padding: 2px 5px;

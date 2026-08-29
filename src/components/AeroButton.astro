@@ -1,7 +1,7 @@
 ---
 import { AeroButtonColors } from "../scripts/aerobutton";
 
-const { color, text_color = "var(--white)", href = "/", target = "_self" } = Astro.props;
+const { color, id = "", type, text_color = "#fff" } = Astro.props;
 
 const buttonc = AeroButtonColors(color);
 ---
@@ -16,20 +16,24 @@ const buttonc = AeroButtonColors(color);
     text_color: text_color,
   }}
 >
-  a {
+  button {
     background: linear-gradient(to bottom, var(--color_lighter), var(--color_lighter), var(--color), var(--color));
     box-shadow: inset 0 0 0 1px var(--color_border);
     border-radius: 2px;
+    border: 0px;
+    cursor: pointer;
+    font-family: "Stack Sans Text";
+    outline: 0px solid transparent;
 
     color: var(--text_color);
     text-shadow: 0px 0px 4px var(--black);
-    padding: 2px 8px;
+    padding: 2px 1em;
 
     text-decoration: none;
     text-align: center;
   }
 
-  a:hover {
+  button:hover {
     background: linear-gradient(
       to bottom,
       var(--color_hover_lighter),
@@ -40,6 +44,6 @@ const buttonc = AeroButtonColors(color);
   }
 </style>
 
-<a href={href} target={target}>
+<button id={id} type={type}>
   <slot />
-</a>
+</button>

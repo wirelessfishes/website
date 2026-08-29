@@ -2,7 +2,6 @@ import { getEl } from "./module/dom.js";
 
 const input = getEl<HTMLInputElement>("notifyinput");
 const button = getEl<HTMLButtonElement>("notifysend");
-const btn_text = getEl("notify-btn-content");
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -14,7 +13,7 @@ async function sendNotification() {
     return;
   }
 
-  btn_text.innerHTML = "Sending...";
+  button.innerHTML = "Sending...";
   button.disabled = true;
 
   let resp = await fetch("https://api.wireless.fish/ntfy", {
@@ -27,22 +26,22 @@ async function sendNotification() {
   input.value = "";
 
   if (!resp.ok) {
-    btn_text.innerHTML = '<span class="error-text">ERROR</span>';
+    button.innerHTML = '<span class="error-text">ERROR</span>';
     button.disabled = true;
 
     await sleep(3000);
 
-    btn_text.innerHTML = beforetext;
+    button.innerHTML = beforetext;
     button.disabled = false;
 
     onNotifyInput();
   } else {
-    btn_text.innerHTML = "Sent! :)";
+    button.innerHTML = "Sent! :)";
     button.disabled = true;
 
     await sleep(3000);
 
-    btn_text.innerHTML = beforetext;
+    button.innerHTML = beforetext;
     button.disabled = false;
 
     onNotifyInput();
@@ -61,7 +60,7 @@ button.onclick = async function () {
   try {
     await sendNotification();
   } catch (e) {
-    btn_text.innerHTML = '<span class="error-text">ERROR</span>';
+    button.innerHTML = '<span class="error-text">ERROR</span>';
     button.disabled = false;
   }
 };

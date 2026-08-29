@@ -4,7 +4,78 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import eightyeight from "../data/eightyeight.json";
 import EightyEightButton from "../components/EightyEightButton.astro";
 import ThingMade from "../components/index/ThingMade.astro";
+import AeroButton from "../components/AeroButton.astro";
 ---
+
+<script src="../scripts/notify.ts"></script>
+
+<style>
+  #notifyinput {
+    flex: 1;
+  }
+
+  .eightyeight {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .webrings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  .notify {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  .notify > form {
+    height: 1em;
+  }
+
+  #contact-fluxer::before,
+  #contact-discord::before,
+  #contact-email::before {
+    display: inline-block;
+    height: 1.5em;
+    margin-right: 0.5em;
+    width: 1.5em;
+  }
+
+  #contact-fluxer::before {
+    content: url("/assets/icons/fluxer_light.svg");
+  }
+
+  #contact-discord::before {
+    content: url("/assets/icons/discord_light.svg");
+  }
+  #contact-email::before {
+    content: url("/assets/icons/email_light.svg");
+  }
+
+  .mybtn {
+    background-color: var(--grey);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    float: right;
+    padding: 0px 4px 4px;
+  }
+
+  .contact-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+
+    div {
+      align-items: center;
+      display: flex;
+    }
+  }
+</style>
 
 <BaseLayout
   title="WIRELESS.FISH"
@@ -80,7 +151,7 @@ import ThingMade from "../components/index/ThingMade.astro";
 
     <form class="notify">
       <textarea id="notifyinput" placeholder="Hello, fishy" rows="1" spellcheck="false"></textarea>
-      <button id="notifysend" class="button" type="submit" disabled><span id="notify-btn-content">Send →</span></button>
+      <AeroButton color="#1e78ff" id="notifysend" type="submit">Send →</AeroButton>
     </form>
   </section>
 
