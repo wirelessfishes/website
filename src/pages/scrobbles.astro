@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import "../styles/page/scrobbles.css";
+---
+
+<script src="../scripts/scrobbles.ts"></script>
+
+<BaseLayout title="WIRELESS.FISH scrobbles" description="See what music I listen to">
+  <section class="content-padding">
+    <h2>Scrobbles</h2>
+    <p>This is what I've been listening to recently <noscript>JAVASCRIPT REQUIRED</noscript></p>
+    <p>
+      Data is sourced though <a href="https://last.fm" target="_blank">last.fm</a> (screw their api though, it sucks real
+      bad)
+    </p>
+  </section>
+
+  <section
+    class="content-padding"
+    style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px"
+    id="scrobbles-section"
+  >
+    <div>
+      <section>
+        <h3 id="scrobbles-activity_title">Latest activity</h3>
+        <div id="scrobbles-activity">Loading activity...</div>
+      </section>
+
+      <section>
+        <h3>Recent tracks</h3>
+        <div id="scrobbles-recent">Loading recent tracks...</div>
+      </section>
+    </div>
+
+    <section class="content-padding">
+      <h3>User info</h3>
+      <section id="scrobbles-info">Loading user info...</section>
+      <h3>Top tracks (90 days)</h3>
+      <section id="scrobbles-info_tracks">Loading top tracks...</section>
+      <h3>Top artists (90 days)</h3>
+      <section id="scrobbles-info_artists">Loading top artists...</section>
+    </section>
+  </section>
+</BaseLayout>
