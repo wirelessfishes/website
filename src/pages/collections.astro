@@ -1,12 +1,39 @@
 ---
 import fs from "node:fs";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const stamps = fs.readdirSync("public/assets/stamps");
 const blinkies = fs.readdirSync("public/assets/blinkies");
-
-import "../styles/page/collections.css";
 ---
+
+<style>
+  .stamps,
+  .blinkies,
+  .collectibles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 4px;
+  }
+
+  .stamps img {
+    height: 56px;
+    width: 99px;
+  }
+
+  .blinkies img {
+    height: 20px;
+    width: 150px;
+  }
+
+  .collectibles a {
+    height: fit-content;
+  }
+
+  .collectibles a:hover {
+    background: none;
+  }
+</style>
 
 <BaseLayout title="WIRELESS.FISH collections" description="I collect images.">
   <section class="content-padding">

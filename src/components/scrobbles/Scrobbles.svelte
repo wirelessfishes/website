@@ -27,11 +27,6 @@
 
 <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px" id="scrobbles-section">
   <div>
-    <!-- LISTENING ACTIVITY -->
-    <section>
-      <h3 id="scrobbles-activity_title">Latest activity</h3>
-    </section>
-
     <!-- RECENT TRACKS -->
     <section>
       <h3>Recent tracks</h3>
