@@ -19,7 +19,7 @@
   let top_tracks: TopTracks | undefined = $state();
   let top_artists: TopArtists | undefined = $state();
 
-  getRecentTracks(16).then((tracks) => (recent_tracks = tracks));
+  getRecentTracks(10).then((tracks) => (recent_tracks = tracks));
   getUserInfo().then((data) => (user_data = data));
   getTopTracks(10).then((tracks) => (top_tracks = tracks));
   getTopArtists(10).then((artists) => (top_artists = artists));
