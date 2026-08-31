@@ -46,6 +46,12 @@ const color_vars = `:root {\n${Object.entries(colors)
       border-image: linear-gradient(to left, var(--red));
     }
   }
+
+  .sidelink-left {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+  }
 </style>
 
 <!DOCTYPE html>
@@ -96,7 +102,9 @@ const color_vars = `:root {\n${Object.entries(colors)
     ) : ""}
   </head>
 
-  <body>    
+  <body>
+    <iframe class="sidelink-left" width="150" height="450" style="border:none" src="https://dogspit.nekoweb.org/sidelink.html" name="sidelink"></iframe>
+
     <div class="content">
       <header>
           <div class="header-title">
