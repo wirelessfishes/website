@@ -1,19 +1,47 @@
 <script lang="ts">
-  import type { GuestbookResponse } from "../../scripts/types/guestbook";
+  import CommentForm from "./CommentForm.svelte";
+
+  import type { GuestbookEntry, GuestbookResponse } from "../../scripts/types/guestbook";
   import { getGuestbook } from "../../scripts/module/guestbook";
   import Comment from "./Comment.svelte";
+  import AeroButton from "@components/AeroButton.svelte";
+  import { colors } from "@scripts/colors";
 
   let guestbook_data: GuestbookResponse | undefined = $state();
 
+  let reply_to: GuestbookEntry | undefined = $state();
+  let disable_replies: boolean = $derived(reply_to !== undefined);
+
+  function onReplyClick(entry: GuestbookEntry) {
+    reply_to = entry;
+  }
+
+  function cancelReply() {
+    reply_to = undefined;
+  }
+
   getGuestbook().then((data) => (guestbook_data = data));
 </script>
+
+{#if reply_to}
+  <div class="content-padding reply_info">
+    ↳ Replying to "{reply_to?.name}"
+  </div>
+{/if}
+
+<CommentForm />
 
 <div class="content-padding comment-container">
   {#if !guestbook_data}
     <span>Loading guestbook data...</span>
   {:else}
     {#each guestbook_data.entries as entry}
-      <Comment guestbook_entry={entry} />
+      <Comment
+        replying_to={reply_to?.id === entry.id}
+        oncancelreply={cancelReply}
+        onreplyclick={onReplyClick}
+        guestbook_entry={entry}
+      />
     {/each}
   {/if}
 </div>
@@ -23,5 +51,13 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .reply_info {
+    background-color: var(--grey);
+    background: linear-gradient(to bottom, var(--grey), var(--darkgrey));
+    padding: 8px;
+    font-size: large;
+    text-align: center;
   }
 </style>

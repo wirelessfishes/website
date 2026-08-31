@@ -10,6 +10,7 @@ export const colors = {
   lightergrey: "#b5b7be",
   darkgrey: "#25282e",
   darkergrey: "#1a1b20",
+  darkbluegrey: "#283a55",
   magenta: "#9d41da",
   red: "#ff1e1e",
   peach: "#fac8c8",

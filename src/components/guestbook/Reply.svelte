@@ -10,7 +10,9 @@
   const { guestbook_entry }: Props = $props();
 </script>
 
-<div>
+<div class="reply_container">
+  <div class="icon">↳</div>
+
   <div class="comment">
     <div>
       <div class="comment_content">
@@ -26,8 +28,21 @@
 </div>
 
 <style>
+  .icon {
+    display: flex;
+    align-items: center;
+    margin-right: 4px;
+  }
+
+  .reply_container {
+    margin-left: 3em;
+    display: flex;
+    background-color: transparent !important;
+  }
+
   .comment {
-    background-color: var(--grey);
+    width: 100%;
+    background-color: var(--darkgrey);
     padding: 2px 8px;
     border-radius: 2px;
 

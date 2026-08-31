@@ -8,10 +8,13 @@
   import { format } from "date-fns";
 
   interface Props {
+    onreplyclick: (reply_entry: GuestbookEntry) => void;
+    oncancelreply: () => void;
     guestbook_entry: GuestbookEntry;
+    replying_to: boolean;
   }
 
-  const { guestbook_entry }: Props = $props();
+  const { onreplyclick, oncancelreply, guestbook_entry, replying_to = false }: Props = $props();
 </script>
 
 <div class="comment_element">
@@ -30,7 +33,13 @@
       </div>
     </div>
 
-    <AeroButton color={colors.blue}>Reply</AeroButton>
+    <div class="control">
+      {#if !replying_to}
+        <AeroButton onclick={() => onreplyclick?.(guestbook_entry)} color={colors.blue}>Reply</AeroButton>
+      {:else}
+        <AeroButton onclick={() => oncancelreply?.()} color={colors.red}>Cancel</AeroButton>
+      {/if}
+    </div>
   </div>
 
   <div class="comment_replies">
@@ -41,8 +50,12 @@
 </div>
 
 <style>
+  .control {
+    text-wrap: nowrap;
+  }
+
   .comment {
-    background-color: var(--darkgrey);
+    background-color: var(--grey);
     padding: 2px 8px;
     border-radius: 2px;
 
@@ -67,6 +80,7 @@
 
   .comment_content {
     font-size: 16px;
+    padding-right: 1em;
   }
 
   .comment_info {

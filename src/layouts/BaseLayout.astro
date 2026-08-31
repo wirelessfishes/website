@@ -1,11 +1,16 @@
 ---
-    const {title, description, og_img} = Astro.props;
+import "@styles/style.css"
+import TabBar from "@components/TabBar.astro";
+import TabElement from "@components/TabElement.astro";
+import { colors } from "@scripts/colors";
 
-    import "../styles/style.css"
+const {title, description, og_img} = Astro.props;
 
-import TabBar from "../components/TabBar.astro";
-import TabElement from "../components/TabElement.astro";
+const color_vars = `:root {\n${Object.entries(colors)
+  .map(([k, v]) => `  --${k}: ${v};`)
+  .join('\n')}\n}`;
 ---
+<style set:html={color_vars} is:global></style>
 
 <style>
   header {

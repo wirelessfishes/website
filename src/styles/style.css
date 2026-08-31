@@ -4,28 +4,6 @@
 @import url("/fonts/StackSansText/stack_sans_text.css");
 @import url("/fonts/AkmornGrotesque/akmorn_grotesque.css");
 
-:root {
-  --blue: #1e78ff;
-  --lightblue: #7aa9f0;
-  --darkblue: #143272;
-  --blue-disabled: #1e314d;
-  --white: #f5f5f5;
-  --black: #16171b;
-  --grey: #353841;
-  --lightgrey: #7d808a;
-  --lightergrey: #b5b7be;
-  --darkgrey: #25282e;
-  --darkergrey: #1a1b20;
-  --magenta: #9d41da;
-  --red: #ff1e1e;
-  --peach: #fac8c8;
-  --darkred: #aa1e1e;
-  --error-red: #ec5757;
-  --orange: #ffb41f;
-  --warning-orange: #eebe5e;
-  --bg: #1c285e;
-}
-
 /* === BASE ELEMENTS === */
 
 html {
@@ -97,12 +75,14 @@ b {
 
 textarea,
 input {
-  background-color: var(--white);
-  color: var(--black);
-  border: 2px inset var(--white);
+  background-color: var(--darkbluegrey);
+  color: var(--white);
+  box-shadow: inset 0px 0px 4px var(--black);
+  border: 2px inset var(--black);
   font-family: "Stack Sans Text";
+  border-radius: 6px;
 
-  padding: 2px 4px;
+  padding: 4px 8px;
   resize: vertical;
 }
 
@@ -221,7 +201,7 @@ details {
 }
 
 .content-padding {
-  padding: 8px 16px;
+  margin: 8px 16px;
 }
 
 .content-padding + .content-padding {

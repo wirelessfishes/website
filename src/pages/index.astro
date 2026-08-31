@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import eightyeight from "../data/eightyeight.json";
 import EightyEightButton from "../components/EightyEightButton.astro";
 import ThingMade from "../components/index/ThingMade.astro";
-import AeroButton from "../components/AeroButton.astro";
+import AeroButton from "../components/AeroButton.svelte";
 ---
 
 <script src="../scripts/notify.ts"></script>
@@ -151,7 +151,7 @@ import AeroButton from "../components/AeroButton.astro";
 
     <form class="notify">
       <textarea id="notifyinput" placeholder="Hello, fishy" rows="1" spellcheck="false"></textarea>
-      <AeroButton color="#1e78ff" id="notifysend" type="submit">Send →</AeroButton>
+      <AeroButton color="#1e78ff" id="notifysend">Send →</AeroButton>
     </form>
   </section>
 
