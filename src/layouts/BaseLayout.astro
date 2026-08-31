@@ -3,6 +3,8 @@ import "@styles/style.css"
 import TabBar from "@components/TabBar.astro";
 import TabElement from "@components/TabElement.astro";
 import { colors } from "@scripts/colors";
+import SiteStats from "@components/SiteStats.svelte";
+import StatusCafe from "@components/StatusCafe.svelte";
 
 const {title, description, og_img} = Astro.props;
 
@@ -13,8 +15,15 @@ const color_vars = `:root {\n${Object.entries(colors)
 <style set:html={color_vars} is:global></style>
 
 <style>
-  header {
-    
+  html {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+
+  body {
+    display: grid;
+    grid-template-columns: 200px 1000px 200px;
   }
 
   footer {
@@ -47,10 +56,21 @@ const color_vars = `:root {\n${Object.entries(colors)
     }
   }
 
-  .sidelink-left {
-    position: absolute;
-    top: 300px;
-    left: 300px;
+  .sidebar {
+    height: 100%;
+  }
+
+  .sidelink {
+    margin-top: 256px;
+    margin-left: 16px
+  }
+
+  .sidecard {
+    background-color: var(--black);
+    padding: 4px 8px;
+
+    border: 1px solid var(--grey);
+    border-right: none;
   }
 </style>
 
@@ -103,7 +123,15 @@ const color_vars = `:root {\n${Object.entries(colors)
   </head>
 
   <body>
-    <iframe class="sidelink-left" width="150" height="450" style="border:none" src="https://dogspit.nekoweb.org/sidelink.html" name="sidelink"></iframe>
+    <div class="sidebar">
+      <div class="sidecard" style="margin-top: 195px;">
+        <SiteStats client:only/>
+      </div>
+
+      <div class="sidecard" style="margin-top: 20px;">
+        <StatusCafe client:only/>
+      </div>
+    </div>
 
     <div class="content">
       <header>
@@ -129,6 +157,10 @@ const color_vars = `:root {\n${Object.entries(colors)
 
         <div>© Sharky 2025-2026 <a class="link-button link-alt" href="/LICENSE.txt">→</a></div>
       </footer>
+    </div>
+
+    <div class="sidebar">
+        <iframe class="sidelink" width="150" height="450" style="border:none" src="https://dogspit.nekoweb.org/sidelink.html" name="sidelink"></iframe>
     </div>
   </body>
 </html>

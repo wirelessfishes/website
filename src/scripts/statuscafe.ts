@@ -1,17 +1,17 @@
 import { getEl } from "./module/dom.js";
 import { setLocalStorageMinutes, getLocalStorage } from "./module/localstorage.js";
 
-const cache_key = "scafe";
-const cache_expire_minutes = 5;
+const CACHE_KEY = "SCAFE";
+const CACHE_EXPIRE_MINUTES = 5;
 
-interface StatusCafe {
+export interface StatusCafe {
   author: string;
   timeAgo: string;
   content: string;
 }
 
-async function getSCafeData() {
-  let cache_data = getLocalStorage(cache_key);
+export async function getSCafeData(): Promise<StatusCafe> {
+  let cache_data = getLocalStorage(CACHE_KEY);
   if (cache_data) {
     return JSON.parse(cache_data);
   }
@@ -25,26 +25,7 @@ async function getSCafeData() {
     content: json.content,
   };
 
-  setLocalStorageMinutes(cache_key, JSON.stringify(data), cache_expire_minutes);
+  setLocalStorageMinutes(CACHE_KEY, JSON.stringify(data), CACHE_EXPIRE_MINUTES);
 
   return data;
-}
-
-try {
-  let data = await getSCafeData();
-
-  getEl("statuscafe-username").innerHTML =
-    '<a href="https://status.cafe/users/sharky" target="_blank">' + data.author + "</a> ";
-  getEl("statuscafe-ago").textContent = data.timeAgo;
-  getEl("statuscafe-content").textContent = `"${data.content}"`;
-} catch (e) {
-  console.log(e);
-  let el = getEl("statuscafe");
-
-  if (e instanceof Error && e.toString().includes("NetworkError")) {
-    el.innerHTML = '<span class="error-text">[Network error]</span> while trying to fetch from status.cafe';
-  } else {
-    el.innerHTML =
-      'Some sort of <span class="error-text">error</span> has occoured while fetching data from status.cafe';
-  }
 }

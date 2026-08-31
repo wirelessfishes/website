@@ -16,6 +16,7 @@ export const colors = {
   peach: "#fac8c8",
   darkred: "#aa1e1e",
   error_red: "#ec5757",
+  green: "#18f118",
   orange: "#ffb41f",
   warning_orange: "#eebe5e",
   bg: "#1c285e",

@@ -20,6 +20,9 @@ importers:
       date-fns:
         specifier: ^4.4.0
         version: 4.4.0
+      javascript-time-ago:
+        specifier: ^2.6.4
+        version: 2.6.4
       svelte:
         specifier: ^5.57.0
         version: 5.57.0
@@ -1046,6 +1049,9 @@ packages:
   is-reference@3.0.3:
     resolution: {integrity: sha512-ixkJoqQvAP88E6wLydLGGqCJsrFUnqoH6HnaczB8XmDH1oaWU+xxdptvikTgaEhtZ53Ky6YXiBuUI2WXLMCwjw==}
 
+  javascript-time-ago@2.6.4:
+    resolution: {integrity: sha512-7K/Z37LuwVaxxjutUDd1pXpznufPcox0b1UYu00ksAMMlV6IsxIvduwL3kgfPxuBVF8jVj7nhrKMPDslMq94aQ==}
+
   js-yaml@4.3.1:
     resolution: {integrity: sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==}
     hasBin: true
@@ -1288,6 +1294,9 @@ packages:
 
   regex@6.1.0:
     resolution: {integrity: sha512-6VwtthbV4o/7+OaAF9I5L5V3llLEsoPyq9P1JVXkedTP33c7MfCG0/5NOPcSJn0TzXcG9YUrR0gQSWioew3LDg==}
+
+  relative-time-format@1.1.12:
+    resolution: {integrity: sha512-qaZBjmRIuXLfuLnzgqpFdBPa5W0euSX1tMnoMUHGPphLwJmrt8xbNiOIHrlvYOD6oNJ0M5owPCZyPibI8de5pQ==}
 
   resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
@@ -2507,6 +2516,10 @@ snapshots:
     dependencies:
       '@types/estree': 1.0.9
 
+  javascript-time-ago@2.6.4:
+    dependencies:
+      relative-time-format: 1.1.12
+
   js-yaml@4.3.1:
     dependencies:
       argparse: 2.0.1
@@ -2709,6 +2722,8 @@ snapshots:
   regex@6.1.0:
     dependencies:
       regex-utilities: 2.3.0
+
+  relative-time-format@1.1.12: {}
 
   resolve-pkg-maps@1.0.0: {}
 
