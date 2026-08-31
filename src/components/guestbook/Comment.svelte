@@ -25,7 +25,13 @@
       </div>
 
       <div class="comment_info">
-        <span class="comment_name">{guestbook_entry.name}</span>
+        <span class="comment_name">
+          {guestbook_entry.name}
+          {#if guestbook_entry.verified}
+            <img class="verified-img" title="Webmaster" alt="verified icon" loading="lazy" src="/assets/shield.svg" />
+          {/if}
+        </span>
+
         <span class="comment_date">{format(new Date(guestbook_entry.created), "yyyy/MM/dd")}</span>
         {#if guestbook_entry.site}
           <a href={guestbook_entry.site} target="_blank">{new URL(guestbook_entry.site).hostname} 🡕</a>
@@ -89,5 +95,16 @@
 
     color: var(--lightgrey);
     font-style: italic;
+  }
+
+  .comment_name {
+    display: flex;
+    align-items: center;
+  }
+
+  .verified-img {
+    margin-left: 6px;
+    display: inline;
+    width: 1em;
   }
 </style>
