@@ -1,13 +1,27 @@
 <script lang="ts">
   import MarqueeOverflow from "@components/MarqueeOverflow.svelte";
   import { getRecentTracks, getScrobbleCover, type Scrobble } from "@scripts/module/lastfm";
+  import { sleep } from "@scripts/module/util";
   import TimeAgo from "javascript-time-ago";
 
   let timeAgo = new TimeAgo("en");
 
   let scrobble: Scrobble | undefined = $state();
 
-  getRecentTracks(1).then((data) => (scrobble = data.recenttracks.track[0]));
+  $effect(() => {
+    (async () => {
+      while (true) {
+        try {
+          const data = await getRecentTracks(1);
+          scrobble = data.recenttracks.track[0];
+        } catch (e) {
+          console.error("Last.fm fetch error");
+          console.error(e);
+        }
+        await sleep(15000);
+      }
+    })();
+  });
 </script>
 
 <div>
