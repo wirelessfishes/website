@@ -25,7 +25,7 @@
   </div>
 {/if}
 
-<CommentForm />
+<CommentForm {reply_to} />
 
 <div class="content-padding comment-container">
   {#if !guestbook_data}

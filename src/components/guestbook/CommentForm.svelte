@@ -2,16 +2,21 @@
   import AeroButton from "@components/AeroButton.svelte";
   import { colors } from "@scripts/colors";
   import { sleep } from "@scripts/module/util";
-  import type { GuestbookPostBody } from "@scripts/types/guestbook";
+  import type { GuestbookEntry, GuestbookPostBody } from "@scripts/types/guestbook";
   import validator from "validator";
 
   let name: string = $state("");
   let website_url: string = $state("");
   let comment_content: string = $state("");
-  let reply_to: number | undefined = $state();
   let valid_comment: boolean = $state(false);
 
   let submit_status: string | undefined = $state();
+
+  interface Props {
+    reply_to: GuestbookEntry | undefined;
+  }
+
+  let { reply_to = $bindable() }: Props = $props();
 
   function validateForm() {
     if (name.trim().length <= 0) {
@@ -39,7 +44,7 @@
     name,
     content: comment_content,
     site: website_url,
-    reply_to,
+    reply_to: reply_to?.id,
   });
 
   async function submitComment(e: Event) {
