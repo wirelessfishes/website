@@ -11,6 +11,13 @@
 
   {#if !scafe}
     <div>Loading...</div>
+
+    <div class="user">
+      [
+      <span>Loading...</span>
+      <span>Loading...</span>
+      ]
+    </div>
   {:else}
     <div>{scafe.content}</div>
 

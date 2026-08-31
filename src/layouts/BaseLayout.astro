@@ -6,6 +6,7 @@ import { colors } from "@scripts/colors";
 import SiteStats from "@components/SiteStats.svelte";
 import StatusCafe from "@components/StatusCafe.svelte";
 import FloatingImg from "@components/FloatingImg.svelte";
+import RecentScrobble from "@components/RecentScrobble.svelte";
 
 const {title, description, og_img} = Astro.props;
 
@@ -134,6 +135,10 @@ const color_vars = `:root {\n${Object.entries(colors)
       </div>
 
       <FloatingImg alt="a blacktip shark" src="/assets/sharks/blacktip.webp" top="-20px" left="-20px" width="256px"/>
+
+      <div class="sidecard" style="margin-top: 45px; padding: 8px;">
+        <RecentScrobble client:only/>
+      </div>
     </div>
 
     <div class="content">
