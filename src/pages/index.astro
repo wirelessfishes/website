@@ -1,10 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
-import eightyeight from "../data/eightyeight.json";
-import EightyEightButton from "../components/EightyEightButton.astro";
-import ThingMade from "../components/index/ThingMade.astro";
-import AeroButton from "../components/AeroButton.svelte";
+import eightyeight from "@data/eightyeight.json";
+import EightyEightButton from "@components/EightyEightButton.astro";
+import ThingMade from "@components/index/ThingMade.astro";
+import AeroButton from "@components/AeroButton.svelte";
+import FloatingImg from "@components/FloatingImg.svelte";
 ---
 
 <script src="../scripts/notify.ts"></script>
@@ -104,22 +105,6 @@ import AeroButton from "../components/AeroButton.svelte";
 
     <p>More things to come!</p>
   </section>
-
-  <!-- <section class="content-padding">
-    <h3>Latest status</h3>
-
-    <div id="statuscafe">
-      <div>
-        <span id="statuscafe-username"></span>
-        <span id="statuscafe-ago"></span>
-      </div>
-
-      <div id="statuscafe-content">
-        Fetching content from status.cafe...
-        <noscript>(requires javascript)</noscript>
-      </div>
-    </div>
-  </section> -->
 
   <ThingMade title="Latest thing I made" date="19/08/26" image="/assets/thing/19-08-26/fixed.jpg">
     <p>I fixed a stand thingy that sits on top of a toaster using 3D printing, yay! Don't get too excited though.</p>
@@ -240,6 +225,8 @@ import AeroButton from "../components/AeroButton.svelte";
       <div id="contact-email">E-Mail: sharky@wireless.fish</div>
     </div>
   </section>
+
+  <FloatingImg alt="a pyjama shark" src="/assets/sharks/pyjama.webp" top="50px" left="-50px" width="256px" />
 
   <section class="arivertisement">
     <iframe

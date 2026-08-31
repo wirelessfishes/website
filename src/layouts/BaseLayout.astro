@@ -5,6 +5,7 @@ import TabElement from "@components/TabElement.astro";
 import { colors } from "@scripts/colors";
 import SiteStats from "@components/SiteStats.svelte";
 import StatusCafe from "@components/StatusCafe.svelte";
+import FloatingImg from "@components/FloatingImg.svelte";
 
 const {title, description, og_img} = Astro.props;
 
@@ -128,9 +129,11 @@ const color_vars = `:root {\n${Object.entries(colors)
         <SiteStats client:only/>
       </div>
 
-      <div class="sidecard" style="margin-top: 20px;">
+      <div class="sidecard" style="margin-top: 8px;">
         <StatusCafe client:only/>
       </div>
+
+      <FloatingImg alt="a blacktip shark" src="/assets/sharks/blacktip.webp" top="-20px" left="-20px" width="256px"/>
     </div>
 
     <div class="content">
@@ -145,6 +148,8 @@ const color_vars = `:root {\n${Object.entries(colors)
             <TabElement href="/scrobbles/">Scrobbles</TabElement>
             <TabElement href="/guestbook/">Guestbook</TabElement>
           </TabBar>
+
+          <FloatingImg alt="a great white shark" src="/assets/sharks/great_white.webp" top="-130px" left="930px" width="256px"/>
       </header>
 
       <slot />
@@ -161,6 +166,7 @@ const color_vars = `:root {\n${Object.entries(colors)
 
     <div class="sidebar">
         <iframe class="sidelink" width="150" height="450" style="border:none" src="https://dogspit.nekoweb.org/sidelink.html" name="sidelink"></iframe>
+        <FloatingImg alt="a blacktip shark" src="/assets/sharks/blacktip2.webp" top="10px" left="-20px" width="256px"/>
     </div>
   </body>
 </html>
