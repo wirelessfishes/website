@@ -4,13 +4,9 @@
   import type { GuestbookEntry, GuestbookResponse } from "../../scripts/types/guestbook";
   import { getGuestbook } from "../../scripts/module/guestbook";
   import Comment from "./Comment.svelte";
-  import AeroButton from "@components/AeroButton.svelte";
-  import { colors } from "@scripts/colors";
 
   let guestbook_data: GuestbookResponse | undefined = $state();
-
   let reply_to: GuestbookEntry | undefined = $state();
-  let disable_replies: boolean = $derived(reply_to !== undefined);
 
   function onReplyClick(entry: GuestbookEntry) {
     reply_to = entry;

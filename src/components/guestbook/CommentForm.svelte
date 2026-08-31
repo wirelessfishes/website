@@ -1,6 +1,7 @@
 <script lang="ts">
   import AeroButton from "@components/AeroButton.svelte";
   import { colors } from "@scripts/colors";
+  import { sleep } from "@scripts/module/util";
   import type { GuestbookPostBody } from "@scripts/types/guestbook";
   import validator from "validator";
 
@@ -9,6 +10,8 @@
   let comment_content: string = $state("");
   let reply_to: number | undefined = $state();
   let valid_comment: boolean = $state(false);
+
+  let submit_status: string | undefined = $state();
 
   function validateForm() {
     if (name.trim().length <= 0) {
@@ -39,8 +42,39 @@
     reply_to,
   });
 
-  async function submitComment() {
-    alert(`Implement submitting the form LOL\n${JSON.stringify(guesbook_post_data)}`);
+  async function submitComment(e: Event) {
+    e.preventDefault();
+
+    submit_status = "Sending...";
+
+    let resp: Response | undefined;
+
+    try {
+      console.log(guesbook_post_data);
+      resp = await fetch("https://api.wireless.fish/guestbook", {
+        method: "POST",
+        body: JSON.stringify(guesbook_post_data),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+    } catch (e) {
+      submit_status = `Network error. Check your connection.`;
+      return;
+    }
+
+    if (resp.status == 200) {
+      reply_to = undefined;
+
+      name = "";
+      website_url = "";
+      comment_content = "";
+
+      await sleep(1000);
+      window.location.reload();
+    } else {
+      submit_status = `Error while posting (${resp.status}). Please poke me on discord/fluxer/email.`;
+    }
   }
 </script>
 
@@ -71,7 +105,13 @@
     ></textarea>
   </div>
 
-  <AeroButton disabled={!valid_comment} onclick={submitComment} color={colors.blue}>Submit</AeroButton>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <AeroButton disabled={!valid_comment} onclick={submitComment} color={colors.blue}>Submit</AeroButton>
+
+    {#if submit_status}
+      <div class="submit_status">{submit_status}</div>
+    {/if}
+  </div>
 </form>
 
 <style>
@@ -109,5 +149,9 @@
     flex-direction: column;
     gap: 8px;
     align-items: center;
+  }
+
+  .submit_status {
+    padding: 4px 8px;
   }
 </style>

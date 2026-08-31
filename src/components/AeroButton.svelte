@@ -14,7 +14,7 @@
   style:--color_hover_lighter={buttonc.hover.lighter}
   {id}
   {disabled}
-  onclick={() => onclick?.()}
+  onclick={(e) => onclick?.(e)}
 >
   {@render children()}
 </button>
