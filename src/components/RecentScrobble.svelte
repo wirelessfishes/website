@@ -2,6 +2,7 @@
   import MarqueeOverflow from "@components/MarqueeOverflow.svelte";
   import { getRecentTracks, getScrobbleCover, type Scrobble } from "@scripts/module/lastfm";
   import { sleep } from "@scripts/module/util";
+  import "javascript-time-ago/locale/en";
   import TimeAgo from "javascript-time-ago";
 
   let timeAgo = new TimeAgo("en");

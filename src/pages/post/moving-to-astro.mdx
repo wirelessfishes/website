@@ -1,0 +1,149 @@
+---
+layout: "@layouts/Post.astro"
+title: So long, 11ty!
+description: I have migrated my site to a different SSG, from 11ty to Astro.
+  This was for various reasons... mainly because of the utility of components and also because of better documentation.
+date: 2026-09-01T16:45:00.000+2:00
+---
+
+import AeroButton from "@components/AeroButton.svelte";
+import ChangingShowcase from "@components/posts/moving-to-astro/ChangingShowcase.svelte";
+import EleventyMascot from "@components/posts/moving-to-astro/EleventyMascot.svelte";
+
+<EleventyMascot />
+
+Okay so some context, my site has used the [11ty](https://www.11ty.dev/) static
+site generator ever since the commit
+[141d103](https://github.com/wirelessfishes/website/commit/141d103337e7ba7e349cec8d05aa5660aa627680)
+(2025/06/07 - wow that's 7 months ago). This was what I would call an "alright" decision,
+since I only really needed to avoid copy-pasting my navbar on every page.
+
+11ty rocks (so does their mascot)! It is perfect for inserting html snippets and creating
+simple blogs. However the problem arises when you try to do anything more than that. When I
+wanted to go from simple html snippets to full blown components, 11ty just does not have a
+simple way of doing that. And then you end up manually manipulating the DOM just do make
+a guestbook.
+
+Needless to say that, combined with the lacking documentation (it's bearable only when you use an AI
+chatbot to search for stuff) has made me want to move away more and more. So I've bitten the bullet
+and ported the whole website over to Astro+Svelte over the course of 5 days.
+
+## The good
+
+### Community
+
+Documentation is now understandable, yay! Both Astro and Svelte have good docs
+and combined with their large communities make it way easier to troubleshoot things.
+
+### Integration
+
+Integrating svelte was also as easy as:
+
+```bash
+pnpm astro add svelte
+```
+
+So convenient!
+
+### Components!!!! &lt;3
+
+Now that I have the power of components on my side, I can do what 11ty can only dream of:
+
+```svelte
+<AeroButton color={"#1e78ff"}>#1e78ff</AeroButton>
+<AeroButton color={"#9d41da"}>#9d41da</AeroButton>
+<AeroButton color={"#ffb41f"}>#ffb41f</AeroButton>
+<AeroButton color={"#ff1e1e"}>#ff1e1e</AeroButton>
+<AeroButton color={"#ec5757"}>#ec5757</AeroButton>
+```
+
+Makes these little things:
+
+<AeroButton color={"#1e78ff"}>#1e78ff</AeroButton>
+<AeroButton color={"#9d41da"}>#9d41da</AeroButton>
+<AeroButton color={"#ffb41f"}>#ffb41f</AeroButton>
+<AeroButton color={"#ff1e1e"}>#ff1e1e</AeroButton>
+<AeroButton color={"#ec5757"}>#ec5757</AeroButton>
+
+See that? The button component automatically computes it's colors based on
+one color you pass to it!
+
+It uses the `color` npm package to work with colors and essentially does this:
+
+```ts
+// AeroButton.ts
+
+let border = original_color.lighten(0.5).fade(0.5);
+
+// Regular colors
+let regular = {
+  base: original_color,
+  lighter: original_color.lighten(0.3),
+};
+
+// Colors for hovering over the button
+let hover = {
+  base: regular.base.darken(0.15),
+  lighter: regular.lighter.darken(0.15),
+};
+```
+
+Foolproof? No. Could it be done with less scripting and more css? Sure. But I like this
+one, I've made it. And I am happy with it (for now lol).
+
+### Interactivity / scripting
+
+Another thing Astro+Svelte allows me to do is update the DOM very easily! I can
+simply define a variable with `$state()` (in svelte components), use it in a page
+and whenever the variable changes, so does the webpage content!
+
+<ChangingShowcase client:only />
+
+The above example _roughly_ requires me to do this (not valid code):
+
+```svelte
+<!-- ChangingShowcase.svelte -->
+
+<script>
+// import {sleep} from ...
+let words = ["I can", "make these", "words change", "very easily", "with svelte!"];
+let current_word: number = $state(0);
+
+while (true) {
+  current_word += 1;
+
+  if (current_word >= words.length) {
+    current_word = 0;
+  }
+
+  await sleep(1500);
+}
+</script>
+
+<div>
+  {words[current_word]}
+</div>
+```
+
+This is extremely useful for things like... [my guestbook](/guestbook/)
+(which you should definitely sign btw) or the status thingies on the
+left sidebar!
+
+## The bad
+
+So far I haven't had any issues with Astro. It has everything I need and everything I'm missing
+can be added with additional npm packages. I'm looking forward to working with astro more.
+
+## Would you recommend 11ty/Astro?
+
+Eleventy is honestly not the worst, but it has significantly more friction when configuring
+compared to astro. If all you need is simple layouts and html snippets and don't mind the
+config, it's probably right for you. Though if you need anything more (you probably do,
+svelte components are awesome if not only for the scoped styles) you'll want to run Astro.
+
+Astro's nice, it compiles to a static pages (perfect for nekoweb/neocities) and stays fast
+thanks to javascript islands (honestly I still don't really understand it fully, so
+[here's](https://docs.astro.build/en/concepts/islands/) a link).
+
+As always more things to come,  
+Much love, Sharky ♥

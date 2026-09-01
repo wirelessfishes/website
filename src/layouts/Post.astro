@@ -1,0 +1,45 @@
+---
+import FormatAgo from "@components/FormatAgo.svelte";
+import BaseLayout from "./BaseLayout.astro";
+import { format } from "date-fns";
+const { frontmatter } = Astro.props;
+
+const date = new Date(frontmatter.date);
+---
+
+<BaseLayout
+  title={frontmatter.title || "METHOD: POST"}
+  description={frontmatter.description || "I wrote about something"}
+  og_img={frontmatter.og_img}
+>
+  <div class="content-padding">
+    <div class="post-head">
+      <h2>{frontmatter.title}</h2>
+      <div class="date">
+        {format(date, "yyyy/MM/dd")} (<FormatAgo client:only date={date} format="round" />)
+      </div>
+      <div class="description">{frontmatter.description}</div>
+    </div>
+
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  h2 {
+    margin: 0;
+  }
+
+  .post-head {
+    background-color: var(--darkgrey);
+    padding: 6px 10px;
+  }
+
+  .description {
+  }
+
+  .date {
+    opacity: 70%;
+    font-style: italic;
+  }
+</style>

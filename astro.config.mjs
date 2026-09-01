@@ -1,8 +1,11 @@
 import { defineConfig } from "astro/config";
-
 import svelte from "@astrojs/svelte";
+import mdx from "@astrojs/mdx";
+import { satteri } from "@astrojs/markdown-satteri";
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [svelte()]
+  integrations: [svelte(), mdx()],
+  markdown: {
+    processor: satteri({ features: { directive: true } }),
+  },
 });
