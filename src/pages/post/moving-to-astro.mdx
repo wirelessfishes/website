@@ -1,9 +1,10 @@
 ---
 layout: "@layouts/Post.astro"
-title: So long, 11ty!
-description: I have migrated my site to a different SSG, from 11ty to Astro.
-  This was for various reasons... mainly because of the utility of components and also because of better documentation.
-date: 2026-09-01T16:45:00.000+2:00
+title: So long, Eleventy!
+description: I have migrated my site to a different SSG, from Eleventy to Astro.
+  This was for various reasons... mainly because of the utility of components and better documentation.
+published: 2026-09-02T11:50:00.000+2:00
+# updated: timedate string of last update
 ---
 
 import AeroButton from "@components/AeroButton.svelte";
@@ -12,7 +13,7 @@ import EleventyMascot from "@components/posts/moving-to-astro/EleventyMascot.sve
 
 <EleventyMascot />
 
-Okay so some context, my site has used the [11ty](https://www.11ty.dev/) static
+Okay so some context, my site has used the [Eleventy](https://www.11ty.dev/) static
 site generator ever since the commit
 [141d103](https://github.com/wirelessfishes/website/commit/141d103337e7ba7e349cec8d05aa5660aa627680)
 (2025/06/07 - wow that's 7 months ago). This was what I would call an "alright" decision,
@@ -20,24 +21,24 @@ since I only really needed to avoid copy-pasting my navbar on every page.
 
 11ty rocks (so does their mascot)! It is perfect for inserting html snippets and creating
 simple blogs. However the problem arises when you try to do anything more than that. When I
-wanted to go from simple html snippets to full blown components, 11ty just does not have a
+wanted to go from simple html snippets to full blown components, Eleventy just does not have a
 simple way of doing that. And then you end up manually manipulating the DOM just do make
-a guestbook.
+a guestbook. [Ask me how I know](https://github.com/wirelessfishes/website/blob/52f49ba1e4f89ac7559efc5e938e10c9957563e5/src/scripts/guestbook.ts).
 
-Needless to say that, combined with the lacking documentation (it's bearable only when you use an AI
+Needless to say that combined with the lacking documentation (it's bearable only when you use an AI
 chatbot to search for stuff) has made me want to move away more and more. So I've bitten the bullet
-and ported the whole website over to Astro+Svelte over the course of 5 days.
+and ported the whole website to Astro+Svelte over the course of 5 days.
 
 ## The good
 
 ### Community
 
-Documentation is now understandable, yay! Both Astro and Svelte have good docs
+Documentation is now actually useful, yay! Both Astro and Svelte have good docs
 and combined with their large communities make it way easier to troubleshoot things.
 
 ### Integration
 
-Integrating svelte was also as easy as:
+Integrating Svelte into Astro is as easy as:
 
 ```bash
 pnpm astro add svelte
@@ -47,32 +48,30 @@ So convenient!
 
 ### Components!!!! &lt;3
 
-Now that I have the power of components on my side, I can do what 11ty can only dream of:
+Now that I have the power of components on my side, I can do what Eleventy can only dream of:
 
 ```svelte
-<AeroButton color={"#1e78ff"}>#1e78ff</AeroButton>
-<AeroButton color={"#9d41da"}>#9d41da</AeroButton>
-<AeroButton color={"#ffb41f"}>#ffb41f</AeroButton>
-<AeroButton color={"#ff1e1e"}>#ff1e1e</AeroButton>
-<AeroButton color={"#ec5757"}>#ec5757</AeroButton>
+<AeroButton color={"#1e78ff"}>Button 1</AeroButton>
+<AeroButton color={"#9d41da"}>Button 2</AeroButton>
+<AeroButton color={"#ffb41f"}>Button 3</AeroButton>
+<AeroButton color={"#ff1e1e"}>Button 4</AeroButton>
+<AeroButton color={"#ec5757"}>Button 5</AeroButton>
 ```
 
-Makes these little things:
+The snipped above produces this:
 
-<AeroButton color={"#1e78ff"}>#1e78ff</AeroButton>
-<AeroButton color={"#9d41da"}>#9d41da</AeroButton>
-<AeroButton color={"#ffb41f"}>#ffb41f</AeroButton>
-<AeroButton color={"#ff1e1e"}>#ff1e1e</AeroButton>
-<AeroButton color={"#ec5757"}>#ec5757</AeroButton>
+<AeroButton color={"#1e78ff"}>Button 1</AeroButton>
+<AeroButton color={"#9d41da"}>Button 2</AeroButton>
+<AeroButton color={"#ffb41f"}>Button 3</AeroButton>
+<AeroButton color={"#ff1e1e"}>Button 4</AeroButton>
+<AeroButton color={"#ec5757"}>Button 5</AeroButton>
 
 See that? The button component automatically computes it's colors based on
-one color you pass to it!
+one color you pass to it! So cool!
 
 It uses the `color` npm package to work with colors and essentially does this:
 
 ```ts
-// AeroButton.ts
-
 let border = original_color.lighten(0.5).fade(0.5);
 
 // Regular colors
@@ -89,12 +88,12 @@ let hover = {
 ```
 
 Foolproof? No. Could it be done with less scripting and more css? Sure. But I like this
-one, I've made it. And I am happy with it (for now lol).
+one, I've made it. This one is mine. And I am happy with it (for now lol).
 
 ### Interactivity / scripting
 
-Another thing Astro+Svelte allows me to do is update the DOM very easily! I can
-simply define a variable with `$state()` (in svelte components), use it in a page
+Another thing Astro+Svelte allows me to do is update the DOM (webpage content) very easily! I can
+simply define a variable with `$state()` (in Svelte components), use it in a page
 and whenever the variable changes, so does the webpage content!
 
 <ChangingShowcase client:only />
@@ -102,8 +101,6 @@ and whenever the variable changes, so does the webpage content!
 The above example _roughly_ requires me to do this (not valid code):
 
 ```svelte
-<!-- ChangingShowcase.svelte -->
-
 <script>
 // import {sleep} from ...
 let words = ["I can", "make these", "words change", "very easily", "with svelte!"];
@@ -125,25 +122,55 @@ while (true) {
 </div>
 ```
 
+This doesn't look that different compared to just updating the element's content directly with
+`document.getElementById()` and changing it's `innerHtml`. But that gets messy fast
+with every new element that need changing. Also the Eleventy approach would most
+likely have you split HTML, CSS and Javascript into multiple files whereas Svelte
+components contain everything in one, making it way easier to navigate the codebase.
+
 This is extremely useful for things like... [my guestbook](/guestbook/)
 (which you should definitely sign btw) or the status thingies on the
-left sidebar!
+left sidebar! The files contain everything they need to function on their own and I can
+just build site as if I was playing with LEGO. And if something needs changing,
+everything related to one building block is contained within itself \:D
 
 ## The bad
 
-So far I haven't had any issues with Astro. It has everything I need and everything I'm missing
-can be added with additional npm packages. I'm looking forward to working with astro more.
+So far I haven't had any issues with Astro. It has everything I need and the rest can
+be added with additional npm packages. I'm looking forward to working with astro more.
 
-## Would you recommend 11ty/Astro?
+## Would you recommend Eleventy/Astro?
 
 Eleventy is honestly not the worst, but it has significantly more friction when configuring
 compared to astro. If all you need is simple layouts and html snippets and don't mind the
 config, it's probably right for you. Though if you need anything more (you probably do,
-svelte components are awesome if not only for the scoped styles) you'll want to run Astro.
+svelte components are awesome if not only for the scoped styles) you'll want to run Astro
+together with another framework like Svelte.
 
-Astro's nice, it compiles to a static pages (perfect for nekoweb/neocities) and stays fast
-thanks to javascript islands (honestly I still don't really understand it fully, so
-[here's](https://docs.astro.build/en/concepts/islands/) a link).
+Astro's nice, it compiles to a static pages just like Eleventy (perfect for nekoweb/neocities)
+and stays fast thanks to javascript islands (honestly I still don't really understand
+it fully, so [here's](https://docs.astro.build/en/concepts/islands/) a link).
 
-As always more things to come,  
+## What's next?
+
+Well the next thing on the chopping block is the backend for my website. It was mostly written
+by an AI agent over the span of a week while I studied for my maturita exam
+(Czech shool-leaving exam, roughly the same thing as a high school diploma exam). I'm not
+proud of that and I'm sure it's full of bugs. That's exactly why I'll rewrite it
+from scratch. With as little AI generated code as possible.
+
+It's hard to say when that whole thing's going to be done, since my first university semester
+starts on the 14<sup>th</sup> (just 12 days away!). For anyone wondering, I'm going to study Software
+Engineering at the Faculty of Applied Informatics at the [Tomas Bata University](https://www.utb.cz/en/) in Zlín.
+I'm very excited... and have ZERO idea how things are going to work, how much free time I'll have
+and how long it'll take to get adjusted to the new environment. Regardless I will try to finish
+this rewrite as soon as possible, so that I can focus on adding more cool stuff to the site
+(such as a like button for blogposts).
+
+Hey there, you're still reading this? Hi! Do you like this? It's my first "blog post", whatever
+that is. Honestly I might just make an actual blog and write more posts like this one.
+
+Thank you for reading and as always, more things to come (hopefully!),  
 Much love, Sharky ♥
+
+![girls](/assets/post/moving-to-astro/chii.webp)

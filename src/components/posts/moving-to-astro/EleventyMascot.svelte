@@ -4,7 +4,7 @@
 <div class="container">
   <img
     alt="Eleventy mascot (opossum) floating with a baloon strapped to them"
-    src="/assets/posts/moving-to-astro/eleventy.svg"
+    src="/assets/post/moving-to-astro/eleventy.svg"
   />
   <div class="title">The 11ty mascot (2026)</div>
   <div>"Awesome Possum"</div>

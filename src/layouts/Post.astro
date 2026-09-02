@@ -4,7 +4,10 @@ import BaseLayout from "./BaseLayout.astro";
 import { format } from "date-fns";
 const { frontmatter } = Astro.props;
 
-const date = new Date(frontmatter.date);
+const updated_str = frontmatter.updated;
+
+const published = new Date(frontmatter.published);
+const updated = updated_str ? new Date(updated_str) : undefined;
 ---
 
 <BaseLayout
@@ -16,8 +19,21 @@ const date = new Date(frontmatter.date);
     <div class="post-head">
       <h2>{frontmatter.title}</h2>
       <div class="date">
-        {format(date, "yyyy/MM/dd")} (<FormatAgo client:only date={date} format="round" />)
+        Published: {format(published, "yyyy/MM/dd")} (<FormatAgo client:only date={published} format="round" />)
       </div>
+
+      {
+        updated ? (
+          <>
+            <div class="date">
+              Last updated: {format(updated, "yyyy/MM/dd")} (<FormatAgo client:only date={updated} format="round" />)
+            </div>
+          </>
+        ) : (
+          ""
+        )
+      }
+
       <div class="description">{frontmatter.description}</div>
     </div>
 

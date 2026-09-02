@@ -64,7 +64,7 @@
         </div>
 
         <MarqueeOverflow style="font-weight: bold; font-size: 16px;" text={scrobble.name} />
-        <MarqueeOverflow style="font-style: italic;" text={"Album: " + scrobble.album["#text"]} />
+        <MarqueeOverflow style="font-style: italic;" text={scrobble.album["#text"]} />
         <div>By: {scrobble.artist["#text"]}</div>
       </div>
     </div>
