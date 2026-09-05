@@ -176,13 +176,6 @@ details {
 
 /* === LAYOUT === */
 
-.content {
-  background-color: var(--black);
-  max-width: 1000px;
-  min-height: 100vh;
-  width: 100%;
-}
-
 /* === STYLE === */
 
 .box-thing {
@@ -244,6 +237,7 @@ details {
 
 pre.astro-code {
   padding: 8px 16px;
+  max-width: 90vw;
 }
 
 code:not(pre > code) {

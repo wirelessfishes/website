@@ -21,6 +21,7 @@ const color_vars = `:root {\n${Object.entries(colors)
     display: flex;
     justify-content: center;
     align-items: start;
+    overflow: scroll;
   }
 
   body {
@@ -49,7 +50,8 @@ const color_vars = `:root {\n${Object.entries(colors)
 
     h1 {
       padding: 4px 16px;
-      width: 600px;
+      max-width: 600px;
+      overflow: hidden;
       height: fit-content;
       text-align: left;
       background: linear-gradient(to right, var(--black) 81%, transparent);
@@ -62,6 +64,12 @@ const color_vars = `:root {\n${Object.entries(colors)
     height: 100%;
   }
 
+  .content {
+  background-color: var(--black);
+  min-height: 100vh;
+  max-width: 1000px;
+}
+
   .sidelink {
     margin-top: 256px;
     margin-left: 16px
@@ -73,6 +81,16 @@ const color_vars = `:root {\n${Object.entries(colors)
 
     border: 1px solid var(--grey);
     border-right: none;
+  }
+
+  @media (max-width: 1000px) {
+    .sidebar {display: none;}
+    body {display: block;}
+  }
+
+  @media (max-width: 550px) {
+    .header-title > h1 {font-size: 26px; background: var(--black); width: 100%; text-align: center;}
+    .header-title {height: 120px; background-size: contain;}
   }
 </style>
 

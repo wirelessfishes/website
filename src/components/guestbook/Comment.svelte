@@ -107,4 +107,16 @@
     display: inline;
     width: 1em;
   }
+
+  @media (max-width: 500px) {
+    .comment {
+      display: block;
+    }
+
+    .control {
+      display: flex;
+      justify-content: end;
+      padding: 4px;
+    }
+  }
 </style>

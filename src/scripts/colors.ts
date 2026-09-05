@@ -18,6 +18,7 @@ export const colors = {
   error_red: "#ec5757",
   green: "#18f118",
   orange: "#ffb41f",
+  darkorange: "#725927",
   warning_orange: "#eebe5e",
   bg: "#1c285e",
 } as const;

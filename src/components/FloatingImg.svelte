@@ -1,5 +1,5 @@
 <script>
-  const { src, alt, top, left, width, hover_fade = true } = $props();
+  const { src, alt, top, left, width, hover_fade = true, desktop_only = true } = $props();
 </script>
 
 <div class="wrapper" style:width>
@@ -10,6 +10,16 @@
   <style>
     .wrapper:hover {
       opacity: 40%;
+    }
+  </style>
+{/if}
+
+{#if desktop_only}
+  <style>
+    @media (max-width: 1000px) {
+      .wrapper {
+        display: none;
+      }
     }
   </style>
 {/if}

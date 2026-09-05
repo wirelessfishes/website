@@ -25,7 +25,7 @@
   getTopArtists(10).then((artists) => (top_artists = artists));
 </script>
 
-<section style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px" id="scrobbles-section">
+<section class="scrobbles-container" id="scrobbles-section">
   <div>
     <!-- RECENT TRACKS -->
     <section>
@@ -76,5 +76,18 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .scrobbles-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 1000px) {
+    .scrobbles-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>
